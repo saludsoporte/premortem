@@ -1,0 +1,42 @@
+<div  class="container bg-white " style="border-radius: 30px;padding:15px;border:solid;border-width:1px;border-color:lightgray;text-align:center"  data-controller='inicio-sesion'>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="row ">
+      <div class="col"><%= image_tag('Logos SALUD-02.png',size:'100x100') %></div>      
+      <div class="row ">
+        <div class="col">
+          <h5>Iniciar Sesión</h5>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-floating">
+          <%= f.text_field :email, autofocus: true,id: :"floatingLogin",placeholder: :usuario,class: :"form-control"%>
+          <%= f.label :"correo",for: :"floatingLogin" %>
+        </div>
+        <div class="form-floating">
+          <%= f.password_field :password, autocomplete: "current-password",class: :"form-control",id: :"floatingPassword",placeholder: :"Password" %>
+          <%= f.label :" contraseña",for: :"floatingPassword" %>
+        </div>
+      </div>
+      <% if devise_mapping.rememberable? %>
+        <div class="checkbox mb-3">
+          <label>
+            <%= f.check_box :remember_me %>
+            <%= f.label :recordarme %>
+          </label>
+        </div>
+      <% end %>
+      <div class="actions">        
+        <%= f.button "Iniciar",id: :"iniciar",class: :"w-100 btn btn-lg btn-primary" %>        
+      </div>     
+    <% end %>
+  </div>
+  <% case flash[:alert] %>
+  <% when 1%>
+  <div class="alert alert-danger" role="alert">
+    La contraseña es incorrecta
+  </div>
+  <% when 2%>
+  <div class="alert alert-danger" role="alert">
+    El usuario no existe
+  </div>
+<% end %>    

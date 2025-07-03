@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Inicio de Sesión</title>
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "signin", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "loading", "data-turbo-track": "reload" %>       
+    <%= javascript_importmap_tags %>
+  </head>
+  <body >
+    <main class="form-signin">
+      <%= yield %></main>
+  </body>
+  <footer style="padding-top:10px">
+    <% unless !current_user %>
+      <div class="footer">
+        <%= will_paginate @objeto %>
+      </div>
+    <% end %>
+    <p class="text-center text-muted">Servicios de Salud de San Luis Potosi</p>
+  </footer>
+</html>
