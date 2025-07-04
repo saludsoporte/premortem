@@ -12,7 +12,7 @@ default: &default
 
 development:
   <<: *default
-  database: soporte_v2
+  database: premortem
   port: 5550
   username: postgres
   password: 12345
