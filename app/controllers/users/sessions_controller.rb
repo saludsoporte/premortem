@@ -1,12 +1,16 @@
 # frozen_string_literal: true
 
 class Users::SessionsController < Devise::SessionsController
+  prepend_before_action :require_no_authentication, only: [:new, :create]
+  prepend_before_action :allow_params_authentication!, only: :create
+  prepend_before_action :verify_signed_out_user, only: :destroy
+  prepend_before_action(only: [:create, :destroy]) { request.env["devise.skip_timeout"] = true }
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
-  # def new
-  #   super
-  # end
+  def new
+    super
+  end
 
   # POST /resource/sign_in
   # def create
