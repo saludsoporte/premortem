@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Inventarios</title>
+    <title>Sistema para Actas Premortem</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -20,21 +20,22 @@
       </a>
       <%= image_tag("Logos SALUD_01.png", size: "220x52") %> &nbsp;      
       <%# link_to raw("#{image_tag("pencil.svg")} Capturar documento") ,documentos_captura_path(edit:false),class: :"sin_adorno"%> 
-      &nbsp;<div class="vl"></div>
+      
       <%# link_to  raw("#{image_tag("list-task.svg")} Generar Correspondencia"), relaciones_path,class: :"sin_adorno"%>
-      &nbsp;<div class="vl"></div>
+      
       <%# if current_user.oficialia %>
         <%# link_to  raw("#{image_tag("oficialia.png",size:"20x20")} Oficialia"), relacion_oficials_path,class: :"sin_adorno"%>
-        &nbsp;<div class="vl"></div>
+      
       <%# end %>
       <%# link_to raw("#{image_tag("file-earmark-bar-graph.svg")} Reportes"),reportes_path,class: :"sin_adorno"%>
       &nbsp; <div class="vl"></div>
-      <button id="btn_buscar" class="btn btn-sm btn-success" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><span><%=image_tag("search.svg")%></span> Buscar</button>
+      <!--<button id="btn_buscar" class="btn btn-sm btn-success" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><span><%=image_tag("search.svg")%></span> Buscar</button>
+      -->
     </nav>
     <div class="derecha " style="position:relative;top: -40px;"  >
       <div class="input-group">
-        <%# link_to raw("#{image_tag("house-door-w.svg")} Inicio"),root_path,id: :inicio_btn,class: :"btn btn-sm btn-success" %>
-        <%# link_to raw("#{image_tag("door-closed-fill.svg")} Cerrar Sesión"), destroy_user_session_path, data: { turbo_method: :delete},class: :"btn btn-sm btn-danger " %>
+        <%= link_to raw("#{image_tag("house-door-w.svg")} Inicio"),root_path,id: :inicio_btn,class: :"btn btn-sm btn-success" %>
+        <%= link_to raw("#{image_tag("door-closed-fill.svg")} Cerrar Sesión"), destroy_user_session_path, data: { turbo_method: :delete},class: :"btn btn-sm btn-danger " %>
       </div>
     </div>
     <%= yield %>
