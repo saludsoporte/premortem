@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  clave: MyString
+  nombre: MyString
+  activo: false
+  direccion: one
+  subdireccion: one
+
+two:
+  clave: MyString
+  nombre: MyString
+  activo: false
+  direccion: two
+  subdireccion: two
