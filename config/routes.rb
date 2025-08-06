@@ -10,4 +10,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  get "users/registrar",to: "users#registrar"
+  post "users/guardar_usuario", to: "users#guardar_usuario"
 end

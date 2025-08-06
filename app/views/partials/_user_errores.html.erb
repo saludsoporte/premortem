@@ -1,0 +1,18 @@
+<% case locals[:error].to_i %>
+    <% when 1 %>
+    <div class="alert alert-danger" role="alert">  
+        <p class="error">El nombre de usuario ya esta en uso</p>
+    </div>
+    <% when 2 %>
+    <div class="alert alert-danger" role="alert">  
+        <p class="error">Las contraseñas no coinciden</p>
+    </div>
+    <% when 3 %>
+    <div class="alert alert-danger" role="alert">  
+        <p class="error">El nombre de usuario no puede estar vacío.</p>
+    </div>
+    <% when 4 %>
+    <div class="alert alert-danger" role="alert">  
+        <p class="error">La contraseña no puede estar vacia</p>
+    </div>
+<% end %>

@@ -1,0 +1,28 @@
+<div  class="container bg-white " style="border-radius: 30px;padding:15px;border:solid;border-width:1px;border-color:lightgray;text-align:center"  data-controller='inicio-sesion'>
+<%= form_with(model: @nuevo_usuario,url: users_guardar_usuario_path,method: :post) do |f| %>
+  <div class="row ">
+      <div class="col"><%= image_tag('Logos SALUD-02.png',size:'100x100') %></div>          
+      <div class="field">
+        <% f.label :email %><br />
+        <%= f.email_field :email, value:"correo@gmail.com",hidden:true %>
+      </div>
+      <div class="field">
+        <%= f.label :"Nombre de usuario" %><br />
+        <%= f.text_field :username %>
+      </div>
+      <div class="field">
+        <%= f.label :Contraseña %><br />
+        <%= f.password_field :password, autocomplete: "new-password" %>
+      </div>
+      <div class="field">
+        <%= f.label :"Confirmar Contraseña" %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      </div>
+      <div class="actions">
+        <%= f.submit "Enviar" %>
+      </div>
+  </div>
+<% end %>
+<%= link_to "Volver", user_session_path %>
+<%= render "partials/user_errores", locals: {error:params[:error]} %>
+</div>
