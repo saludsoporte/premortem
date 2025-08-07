@@ -6,7 +6,7 @@ class User < ApplicationRecord
   
   validate :validate_username
   validate :username  
-  validate :username  
+  has_one :datos_personal, dependent: :destroy  
   attr_writer :login
 
   def update_password_with_password(params, *options)

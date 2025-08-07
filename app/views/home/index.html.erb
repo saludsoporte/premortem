@@ -1,0 +1,287 @@
+<div class="container bg-white">
+    <% if current_user.datos_personal.nil? %>
+       <%# form_with url:relaciones_a_folear_path , method: :get do |f|%>          
+            <%#raw("#{image_tag("file-arrow-down.svg",size:"20x20")}") %>
+            <%# f.text_field :serial_menu,placeholder: "Introduzca Folio"%>
+            <%# f.submit "Despachar" ,style: :"font-size:12px",class: :"btn btn-sm btn-success"%>
+          <%# end %>     
+        <div> Ingrese sus Datos personales para poder capturar</div>
+
+    <% end %>
+</div>
+
+        <form action="https://formbold.com/s/FORM_ID" method="POST">
+            <!-- Title and Description -->
+            <div class="form-header">
+                <h2 class="form-title">Employee Availability Form</h2>
+                <p class="form-description">
+                    Please fill out the form to provide your availability for
+                    shifts or project assignments.
+                </p>
+            </div>
+
+            <!-- Personal Information -->
+            <div class="form-group">
+                <label for="fullname" class="form-label">Full Name*</label>
+                <input
+                    type="text"
+                    name="fullname"
+                    id="fullname"
+                    class="form-input"
+                    required
+                />
+            </div>
+
+            <div class="form-group">
+                <label for="employee-id" class="form-label"
+                    >Employee ID (Optional)</label
+                >
+                <input
+                    type="text"
+                    name="employee-id"
+                    id="employee-id"
+                    class="form-input"
+                />
+            </div>
+
+            <div class="form-group">
+                <label for="department" class="form-label"
+                    >Department / Team*</label
+                >
+                <input
+                    type="text"
+                    name="department"
+                    id="department"
+                    class="form-input"
+                    required
+                />
+            </div>
+
+            <div class="form-group">
+                <label for="email" class="form-label">Contact Email*</label>
+                <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    class="form-input"
+                    required
+                />
+            </div>
+
+            <div class="form-group">
+                <label for="phone" class="form-label">Phone Number*</label>
+                <input
+                    type="tel"
+                    name="phone"
+                    id="phone"
+                    class="form-input"
+                    required
+                />
+            </div>
+
+            <!-- Availability Details -->
+            <div class="form-group">
+                <label class="form-label">Days of Availability*</label>
+                <div class="options-group">
+                    <label class="option-item"
+                        ><input
+                            type="checkbox"
+                            name="availability-days"
+                            value="mon"
+                            class="form-checkbox"
+                        />
+                        Mon</label
+                    >
+                    <label class="option-item"
+                        ><input
+                            type="checkbox"
+                            name="availability-days"
+                            value="tue"
+                            class="form-checkbox"
+                        />
+                        Tue</label
+                    >
+                    <label class="option-item"
+                        ><input
+                            type="checkbox"
+                            name="availability-days"
+                            value="wed"
+                            class="form-checkbox"
+                        />
+                        Wed</label
+                    >
+                    <label class="option-item"
+                        ><input
+                            type="checkbox"
+                            name="availability-days"
+                            value="thu"
+                            class="form-checkbox"
+                        />
+                        Thu</label
+                    >
+                    <label class="option-item"
+                        ><input
+                            type="checkbox"
+                            name="availability-days"
+                            value="fri"
+                            class="form-checkbox"
+                        />
+                        Fri</label
+                    >
+                    <label class="option-item"
+                        ><input
+                            type="checkbox"
+                            name="availability-days"
+                            value="sat"
+                            class="form-checkbox"
+                        />
+                        Sat</label
+                    >
+                    <label class="option-item"
+                        ><input
+                            type="checkbox"
+                            name="availability-days"
+                            value="sun"
+                            class="form-checkbox"
+                        />
+                        Sun</label
+                    >
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="available-times" class="form-label"
+                    >Available Time Slots*</label
+                >
+                <input
+                    type="text"
+                    name="available-times"
+                    id="available-times"
+                    class="form-input"
+                    placeholder="e.g. 9AM–5PM"
+                    required
+                />
+            </div>
+
+            <div class="form-group">
+                <label for="preferred-shift" class="form-label"
+                    >Preferred Shift (Optional)</label
+                >
+                <select
+                    name="preferred-shift"
+                    id="preferred-shift"
+                    class="form-select"
+                >
+                    <option value="morning">Morning</option>
+                    <option value="evening">Evening</option>
+                    <option value="night">Night</option>
+                    <option value="flexible">Flexible</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="start-date" class="form-label"
+                    >Start Date of Availability*</label
+                >
+                <input
+                    type="date"
+                    name="start-date"
+                    id="start-date"
+                    class="form-input"
+                    required
+                />
+            </div>
+
+            <div class="form-group">
+                <label for="end-date" class="form-label"
+                    >End Date (if temporary) (Optional)</label
+                >
+                <input
+                    type="date"
+                    name="end-date"
+                    id="end-date"
+                    class="form-input"
+                />
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Is Availability Recurring?*</label>
+                <div class="radio-group">
+                    <label class="option-item">
+                        <input
+                            type="radio"
+                            name="is-recurring"
+                            value="yes"
+                            class="form-radio"
+                        />
+                        Yes
+                    </label>
+                    <label class="option-item">
+                        <input
+                            type="radio"
+                            name="is-recurring"
+                            value="no"
+                            class="form-radio"
+                        />
+                        No
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="weekly-hours" class="form-label"
+                    >Total Weekly Hours Preferred (Optional)</label
+                >
+                <input
+                    type="number"
+                    name="weekly-hours"
+                    id="weekly-hours"
+                    class="form-input"
+                />
+            </div>
+
+            <!-- Additional Information -->
+            <div class="form-group">
+                <label for="notes" class="form-label"
+                    >Notes or Constraints (Optional)</label
+                >
+                <textarea
+                    name="notes"
+                    id="notes"
+                    rows="4"
+                    class="form-textarea"
+                ></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="flexibility" class="form-label"
+                    >Flexibility Comment (Optional)</label
+                >
+                <textarea
+                    name="flexibility"
+                    id="flexibility"
+                    rows="3"
+                    class="form-textarea"
+                ></textarea>
+            </div>
+
+            <!-- Consent -->
+            <div class="consent-group">
+                <input
+                    type="checkbox"
+                    id="consent"
+                    class="form-checkbox"
+                    required
+                />
+                <label for="consent" class="consent-label">
+                    I confirm the above availability is accurate to the best of
+                    my knowledge.
+                </label>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="submit-btn"
+                >Submit Availability</button
+            >
+        </form>
+    

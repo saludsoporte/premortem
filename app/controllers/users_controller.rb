@@ -3,7 +3,8 @@ class UsersController < ApplicationController
     @nuevo_usuario = User.new()
   end
   def guardar_usuario    
-    @nuevo_usuario = User.new(email:params[:user][:email],password:params[:user][:password],username:params[:user][:username])
+    @area = Area.find(79)
+    @nuevo_usuario = User.new(email:params[:user][:email],password:params[:user][:password],username:params[:user][:username],area_id:@area.id)
     if User.exists?(username:params[:user][:username])
         @error = 1        
     else

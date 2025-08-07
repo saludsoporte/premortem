@@ -10,9 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_08_04_210513) do
+ActiveRecord::Schema[7.1].define(version: 2025_08_07_200206) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "areas", force: :cascade do |t|
+    t.string "clave"
+    t.string "nombre"
+    t.string "depende_de"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "datos_personals", force: :cascade do |t|
+    t.string "nombre"
+    t.string "apellidos"
+    t.string "puesto"
+    t.string "titulo"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_datos_personals_on_user_id"
+  end
 
   create_table "departamentos", force: :cascade do |t|
     t.string "clave"
@@ -53,10 +72,12 @@ ActiveRecord::Schema[7.1].define(version: 2025_08_04_210513) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "username"
+    t.integer "area_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "datos_personals", "users"
   add_foreign_key "departamentos", "direccions"
   add_foreign_key "departamentos", "subdireccions"
   add_foreign_key "subdireccions", "direccions"
