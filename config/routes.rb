@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   # root "posts#index"
   get "users/registrar",to: "users#registrar"
   post "users/guardar_usuario", to: "users#guardar_usuario"
+  post "datos_personals/guardar_datos", to: "datos_personals#guardar_datos"
+  resources :datos_personals
 end
