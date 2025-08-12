@@ -16,6 +16,8 @@
         </div><br>
         <%= f.text_field :user,value:current_user.id,hidden:true %>                          
         <%= f.submit "Guardar Datos", class: "btn btn-primary btn-sm" %>
-      <% end %>     
+      <% end %>   
+  <% else %>  
+    <%= link_to "Capturar Documento",documento_capturar_path%>
   <% end %>
 </div>

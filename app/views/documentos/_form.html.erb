@@ -1,0 +1,72 @@
+<%= form_with(model: documento) do |form| %>
+  <% if documento.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(documento.errors.count, "error") %> prohibited this documento from being saved:</h2>
+
+      <ul>
+        <% documento.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :fecha_recepcion, style: "display: block" %>
+    <%= form.date_field :fecha_recepcion %>
+  </div>
+
+  <div>
+    <%= form.label :no_memo, style: "display: block" %>
+    <%= form.number_field :no_memo %>
+  </div>
+
+  <div>
+    <%= form.label :area_id_id, style: "display: block" %>
+    <%= form.text_field :area_id_id %>
+  </div>
+
+  <div>
+    <%= form.label :no_libro, style: "display: block" %>
+    <%= form.number_field :no_libro %>
+  </div>
+
+  <div>
+    <%= form.label :nombre, style: "display: block" %>
+    <%= form.text_field :nombre %>
+  </div>
+
+  <div>
+    <%= form.label :fecha_disp, style: "display: block" %>
+    <%= form.date_field :fecha_disp %>
+  </div>
+
+  <div>
+    <%= form.label :notario, style: "display: block" %>
+    <%= form.text_field :notario %>
+  </div>
+
+  <div>
+    <%= form.label :no_notaria, style: "display: block" %>
+    <%= form.number_field :no_notaria %>
+  </div>
+
+  <div>
+    <%= form.label :no_oficio_de_conclucion, style: "display: block" %>
+    <%= form.number_field :no_oficio_de_conclucion %>
+  </div>
+
+  <div>
+    <%= form.label :fecha_conclucion, style: "display: block" %>
+    <%= form.date_field :fecha_conclucion %>
+  </div>
+
+  <div>
+    <%= form.label :observaciones, style: "display: block" %>
+    <%= form.text_field :observaciones %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

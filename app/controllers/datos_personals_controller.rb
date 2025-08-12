@@ -14,8 +14,7 @@ class DatosPersonalsController < ApplicationController
       else
         redirect_to root_path(datos:false)
       end
-    else
-      ssasdasd
+    else      
       redirect_to root_path(datos:false,error:true)
     end    
   end

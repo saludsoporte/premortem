@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fecha_recepcion: 2025-08-12
+  no_memo: 1
+  area_id: one
+  no_libro: 1
+  nombre: MyString
+  fecha_disp: 2025-08-12
+  notario: MyString
+  no_notaria: 1
+  no_oficio_de_conclucion: 1
+  fecha_conclucion: 2025-08-12
+  observaciones: MyString
+
+two:
+  fecha_recepcion: 2025-08-12
+  no_memo: 1
+  area_id: two
+  no_libro: 1
+  nombre: MyString
+  fecha_disp: 2025-08-12
+  notario: MyString
+  no_notaria: 1
+  no_oficio_de_conclucion: 1
+  fecha_conclucion: 2025-08-12
+  observaciones: MyString
