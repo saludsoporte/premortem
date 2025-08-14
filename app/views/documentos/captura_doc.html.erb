@@ -31,11 +31,14 @@
         <div class="hstack gap-3">      
         <%= f.label :"Fecha de Conclusión" %>        
         <%= f.date_field :fecha_conclucion ,class: "form-control" %>
+        <%= f.label :"Archivo Escaneado" %>        
+        <%= f.file_field :archivo ,class: "form-control" %>
         </div><br>  
         <div class="hstack gap-3">
         <%= f.label :"Observaciones" %>        
         <%= f.text_area :observaciones ,class: "form-control"  %>        
         </div><br>
+        <%= f.submit "Guardar Documento" ,class: :"btn btn-sm btn-success"%>
     <% end %>
 </div>
 <br>
