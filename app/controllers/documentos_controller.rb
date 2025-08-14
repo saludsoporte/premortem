@@ -1,5 +1,5 @@
 class DocumentosController < ApplicationController
-  before_action :set_documento, only: %i[ show edit update destroy ]
+  before_action :set_documento, only: %i[ show edit update destroy  ]
 
   # GET /documentos or /documentos.json
   def index
@@ -9,7 +9,11 @@ class DocumentosController < ApplicationController
   # GET /documentos/1 or /documentos/1.json
   def show
   end
-
+  def captura_doc    
+  end
+  def guardar_captura
+        
+  end    
   # GET /documentos/new
   def new
     @documento = Documento.new
@@ -59,8 +63,8 @@ class DocumentosController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_documento
-      @documento = Documento.find(params[:id])
+    def set_documento      
+        @documento = Documento.find(params[:id])     
     end
 
     # Only allow a list of trusted parameters through.

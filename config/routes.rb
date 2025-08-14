@@ -1,5 +1,4 @@
-Rails.application.routes.draw do
-  resources :documentos
+Rails.application.routes.draw do  
   devise_for :users
   get 'home/index'
   root "home#index"
@@ -14,5 +13,9 @@ Rails.application.routes.draw do
   get "users/registrar",to: "users#registrar"
   post "users/guardar_usuario", to: "users#guardar_usuario"
   post "datos_personals/guardar_datos", to: "datos_personals#guardar_datos"
+  get "documentos/captura_doc", to: "documentos#captura_doc"
+  post "documentos/guardar_captura", to: "documentos#guardar_captura"
+
   resources :datos_personals
+  resources :documentos
 end

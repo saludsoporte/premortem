@@ -1,0 +1,45 @@
+<div class="container form-control bg-white">
+    <%= form_with url:documentos_guardar_captura_path,method: :post do |f|%>
+        <div class="hstack  gap-3">
+        <%= f.label :"Fecha de Recepción" %>        
+        <%= f.date_field :fecha_recepcion ,class: "form-control" %>
+        <%= f.label :"Fecha de Disponibilidad" %>        
+        <%= f.date_field :fecha_disp ,class: "form-control" %>
+        </div><br>
+        <div class="hstack  gap-3">
+        <%= f.label :"Número de Memo" %>        
+        <%= f.number_field :no_memo ,class: "form-control" %>
+        <%= f.label :"Número de Libro" %>        
+        <%= f.number_field :no_libro ,class: "form-control" %>
+        </div><br>
+        <div class="hstack gap-3">
+        <%= f.label :"Areas" %>        
+        <%= f.select :area_id, Area.all.collect { |a| [a.nombre, a.id] }, { include_blank: true }, class: "form-select" %>
+        </div><br>
+        <div class="hstack gap-3">
+        <%= f.label :"Nombre" %>        
+        <%= f.text_field :nombre ,class: "form-control" %>        
+        <%= f.label :"Notario" %>        
+        <%= f.text_field :notario ,class: "form-control" %>
+        </div><br>
+        <div class="hstack gap-3">
+          <%= f.label :"Número de Notaría" %>        
+        <%= f.number_field :no_notaria ,class: "form-control" %>
+        <%= f.label :"Número de Oficio de Conclusión" %>        
+        <%= f.number_field :no_oficio_de_conclucion ,class: "form-control" %>
+        </div><br>
+        <div class="hstack gap-3">      
+        <%= f.label :"Fecha de Conclusión" %>        
+        <%= f.date_field :fecha_conclucion ,class: "form-control" %>
+        </div><br>  
+        <div class="hstack gap-3">
+        <%= f.label :"Observaciones" %>        
+        <%= f.text_area :observaciones ,class: "form-control"  %>        
+        </div><br>
+    <% end %>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
