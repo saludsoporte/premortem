@@ -11,9 +11,43 @@ class DocumentosController < ApplicationController
   end
   def captura_doc    
   end
-  def guardar_captura
-        
-  end    
+  def guardar_captura    
+    
+    if validar_datos
+      ghdgxfg
+    else
+      redirect_to documentos_captura_doc_path(error:1)
+    end
+  end 
+  def validar_datos        
+    bandera = true
+    if params[:fecha_recepcion].blank?      
+      bandera = false
+    elsif params[:fecha_disp].blank?      
+      bandera = false
+    elsif params[:no_memo].blank?      
+      bandera = false
+    elsif params[:no_libro].blank?      
+      bandera = false
+    elsif params[:area_id].blank?      
+      bandera = false
+    elsif params[:nombre].blank?      
+      bandera = false
+    elsif params[:notario].blank?      
+      bandera = false
+    elsif params[:no_notaria].blank?      
+      bandera = false
+    elsif params[:no_oficio_de_conclucion].blank?      
+      bandera = false
+    elsif params[:fecha_conclucion].blank?      
+      bandera = false     
+    elsif params[:archivo].blank?      
+      bandera = false     
+    else
+      bandera = true
+    end
+    return bandera  
+  end   
   # GET /documentos/new
   def new
     @documento = Documento.new
