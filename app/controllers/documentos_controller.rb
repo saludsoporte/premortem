@@ -11,10 +11,26 @@ class DocumentosController < ApplicationController
   end
   def captura_doc    
   end
-  def guardar_captura    
-    
+  def guardar_captura        
     if validar_datos
-      ghdgxfg
+      # Guardar los datos
+      documento = Documento.new(        
+        fecha_recepcion: params[:fecha_recepcion],
+        no_memo: params[:no_memo],
+        area_id: params[:area_id],
+        no_libro: params[:no_libro],
+        nombre: params[:nombre],
+        fecha_disp: params[:fecha_disp],
+        notario: params[:notario],
+        no_notaria: params[:no_notaria],
+        no_oficio_de_conclucion: params[:no_oficio_de_conclucion],
+        fecha_conclucion: params[:fecha_conclucion],
+        observaciones: params[:observaciones],
+        archivo: params[:archivo]
+      )
+      if documento.save
+        redirect_to root_path, notice: "Documento guardado exitosamente."
+      end
     else
       redirect_to documentos_captura_doc_path(error:1)
     end

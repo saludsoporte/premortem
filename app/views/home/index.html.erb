@@ -1,4 +1,4 @@
-<div class="container form-control bg-white">
+<div class="container form-control bg-white" data-controller="home">
   <% if current_user.datos_personal.nil? %>
     <div> Ingrese sus Datos personales para poder capturar</div><br>
       <%= form_with url: datos_personals_guardar_datos_path , method: :post do |f|%>          
@@ -21,3 +21,5 @@
     <%= link_to "Capturar Documento", documentos_captura_doc_path %>
   <% end %>
 </div>
+<%= turbo_frame_tag "tabla_principal" do %>  
+<% end %>

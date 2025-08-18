@@ -1,4 +1,7 @@
-<div class="container form-control bg-white">
+<div class="container form-control bg-white" data-controller="documentos">
+  <% if params[:error]=="1" %>
+    <script>alert("Error: No se pudo guardar el documento. Tiene datos faltantes");</script>
+  <% end %>
     <%= form_with url:documentos_guardar_captura_path,method: :post do |f|%>
         <div class="hstack  gap-3">
         <%= f.label :"Fecha de Recepción" %>        
@@ -14,7 +17,7 @@
         </div><br>
         <div class="hstack gap-3">
         <%= f.label :"Areas" %>        
-        <%= f.select :area_id, Area.all.collect { |a| [a.nombre, a.id] }, { include_blank: true }, class: "form-select" %>
+        <%= f.select(:area_id, Area.all.collect{|a| [a.nombre, a.id] }) %>
         </div><br>
         <div class="hstack gap-3">
         <%= f.label :"Nombre" %>        

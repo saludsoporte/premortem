@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   post "datos_personals/guardar_datos", to: "datos_personals#guardar_datos"
   get "documentos/captura_doc", to: "documentos#captura_doc"
   post "documentos/guardar_captura", to: "documentos#guardar_captura"
+  post "home/cargar_tabla_principal", to: "home#cargar_tabla_principal"
 
   resources :datos_personals
   resources :documentos
