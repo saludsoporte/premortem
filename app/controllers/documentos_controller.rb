@@ -29,6 +29,20 @@ class DocumentosController < ApplicationController
         archivo: params[:archivo]
       )
       if documento.save
+        estado = Estado.find_by(estado:'Guardado')
+        area = Area.find(id: documento.area_id)
+        direccion = Direccion.find_by(clave:area.clave).nil?
+        subdireccion = Subdireccion.find_by(clave:area.clave).nil?
+        departamento = Departamento.find_by(clave:area.clave).nil?
+        buzon = Buzone.new(
+          estado_id: estado.id,          
+          area_id:documento.area_id,
+          direccion: direccion,
+          subdireccion: subdireccion,
+          departamento: departamento,
+          documento_id:documento.id
+        )
+        buzon.save
         redirect_to root_path, notice: "Documento guardado exitosamente."
       end
     else

@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  area_id: 1
+  direccion: false
+  subdireccion: false
+  departamento: false
+  documento: one
+  estado: one
+
+two:
+  area_id: 1
+  direccion: false
+  subdireccion: false
+  departamento: false
+  documento: two
+  estado: two

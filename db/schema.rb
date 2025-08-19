@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_08_12_173520) do
+ActiveRecord::Schema[7.1].define(version: 2025_08_19_170612) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -48,6 +48,19 @@ ActiveRecord::Schema[7.1].define(version: 2025_08_12_173520) do
     t.string "depende_de"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "buzones", force: :cascade do |t|
+    t.integer "area_id"
+    t.boolean "direccion"
+    t.boolean "subdireccion"
+    t.boolean "departamento"
+    t.bigint "documento_id", null: false
+    t.bigint "estado_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["documento_id"], name: "index_buzones_on_documento_id"
+    t.index ["estado_id"], name: "index_buzones_on_estado_id"
   end
 
   create_table "datos_personals", force: :cascade do |t|
@@ -98,6 +111,12 @@ ActiveRecord::Schema[7.1].define(version: 2025_08_12_173520) do
     t.index ["area_id"], name: "index_documentos_on_area_id"
   end
 
+  create_table "estados", force: :cascade do |t|
+    t.string "estado"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "subdireccions", force: :cascade do |t|
     t.string "clave"
     t.string "nombre"
@@ -124,6 +143,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_08_12_173520) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "buzones", "documentos"
+  add_foreign_key "buzones", "estados"
   add_foreign_key "datos_personals", "users"
   add_foreign_key "departamentos", "direccions"
   add_foreign_key "departamentos", "subdireccions"

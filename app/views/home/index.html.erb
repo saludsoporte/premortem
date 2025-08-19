@@ -19,7 +19,45 @@
       <% end %>   
   <% else %>  
     <%= link_to "Capturar Documento", documentos_captura_doc_path %>
-  <% end %>
+  <% end %><br> 
 </div>
-<%= turbo_frame_tag "tabla_principal" do %>  
-<% end %>
+ <table class="table table-dark table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th>No</th>
+        <th>Fecha de Recepción</th>
+        <th>No. de Memorandum</th>
+        <th>Area responsable</th>
+        <th>No. Instrumento</th>
+        <th>No. Libro</th>
+        <th>Nombre</th>
+        <th>Fecha de Disposición</th>
+        <th>Notario</th>
+        <th>No. Notaria</th>
+        <th>No. de Oficio de Conclución</th>
+        <th>Fecha de Conclución</th>
+        <th>Documento</th>
+        <th>Observaciones</th>
+      </tr>
+    <% @buzones.each do |b| %>
+      <tr>
+        <td><%= b.id %></td>
+        <td><%= b.fecha_recepcion %></td>
+        <td><%= b.no_memo %></td>
+        <td><%= b.area_responsable %></td>
+        <td><%= b.no_instrumento %></td>
+        <td><%= b.no_libro %></td>
+        <td><%= b.nombre %></td>
+        <td><%= b.fecha_disposicion %></td>
+        <td><%= b.notario %></td>
+        <td><%= b.no_notaria %></td>
+        <td><%= b.no_oficio_conclucion %></td>
+        <td><%= b.fecha_conclucion %></td>
+        <td><%= b.documento %></td>
+        <td><%= b.observaciones %></td>
+      </tr>
+    <% end %>
+  </table>
+  <div id="paginacion_container" class="footer">
+    <%= will_paginate(@buzones,:renderer => WillPaginate::ActionView::BootstrapLinkRenderer ) %>
+  </div>
