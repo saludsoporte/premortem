@@ -30,7 +30,7 @@ class DocumentosController < ApplicationController
       )
       if documento.save
         estado = Estado.find_by(estado:'Guardado')
-        area = Area.find(id: documento.area_id)
+        area = Area.find(documento.area_id)
         direccion = Direccion.find_by(clave:area.clave).nil?
         subdireccion = Subdireccion.find_by(clave:area.clave).nil?
         departamento = Departamento.find_by(clave:area.clave).nil?

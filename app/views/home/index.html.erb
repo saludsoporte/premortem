@@ -21,41 +21,60 @@
     <%= link_to "Capturar Documento", documentos_captura_doc_path %>
   <% end %><br> 
 </div>
- <table class="table table-dark table-hover">
-    <thead class="table-dark">
+ <table class="table table-hover letra">    
+    <% @buzones.each do |buzon| %>
+      <% b = buzon.documento %>
+      <thead class="table-dark">
       <tr>
-        <th>No</th>
-        <th>Fecha de Recepción</th>
+        <th>No</th>        
         <th>No. de Memorandum</th>
-        <th>Area responsable</th>
-        <th>No. Instrumento</th>
-        <th>No. Libro</th>
-        <th>Nombre</th>
-        <th>Fecha de Disposición</th>
-        <th>Notario</th>
-        <th>No. Notaria</th>
-        <th>No. de Oficio de Conclución</th>
-        <th>Fecha de Conclución</th>
-        <th>Documento</th>
+        <th>Area responsable</th>        
+        <th>No. Libro</th>                                
+        <th>Fechas</th>        
         <th>Observaciones</th>
+        <th>Documento</th>
       </tr>
-    <% @buzones.each do |b| %>
+    </thead>
       <tr>
         <td><%= b.id %></td>
-        <td><%= b.fecha_recepcion %></td>
+        
         <td><%= b.no_memo %></td>
-        <td><%= b.area_responsable %></td>
-        <td><%= b.no_instrumento %></td>
-        <td><%= b.no_libro %></td>
-        <td><%= b.nombre %></td>
-        <td><%= b.fecha_disposicion %></td>
+        <td><%= b.area.nombre %></td>        
+        <td><%= b.no_libro %></td>               
+        <td rowspan="3"  style="border-right: 1px solid black;">
+          <table class="table" >
+            <tr>
+              <td class="table-active"><label><b>Fecha Recepcion</b></label></td><td><%= b.fecha_recepcion %></td>
+            </tr>
+            <tr>
+              <td class="table-active"><label><b>Fecha Disposición</b></label></td><td><%= b.fecha_disp %></td>
+            </tr>
+            <tr>
+              <td class="table-active"><label><b>Fecha Conclusión</b></label></td><td><%= b.fecha_conclucion %></td>
+            </tr> 
+          </table>
+        </td>
+        <td rowspan="3" style="border-right: 1px solid black;"><%= b.observaciones %></td>
+        <td  rowspan="3"><%= link_to raw("ver archivo <br>#{image_tag("binoculars.svg",size:"20x20")} #{
+                image_tag "filetype-pdf-w.svg",size:"20x20"}"), 
+                url_for(b.archivo),
+                target: :"_blanck",class: :"btn btn-secondary btn-sm"
+                %>
+        </td>        
+      </tr> 
+      <tr class="table-active">      
+        <th>Nombre</th>        
+        <th>Notario</th>
+        <th>No. Notaria</th>        
+        <th>No. Oficio conclucion</th>             
+      </tr>     
+      <tr class=" table-group-divider">        
+        <td><%= b.nombre %></td>        
         <td><%= b.notario %></td>
         <td><%= b.no_notaria %></td>
-        <td><%= b.no_oficio_conclucion %></td>
-        <td><%= b.fecha_conclucion %></td>
-        <td><%= b.documento %></td>
-        <td><%= b.observaciones %></td>
+        <td><%= b.no_oficio_de_conclucion %></td>        
       </tr>
+      <tr></tr>
     <% end %>
   </table>
   <div id="paginacion_container" class="footer">
