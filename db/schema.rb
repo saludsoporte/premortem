@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_08_19_170612) do
+ActiveRecord::Schema[7.1].define(version: 2025_08_21_200911) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -96,14 +96,14 @@ ActiveRecord::Schema[7.1].define(version: 2025_08_19_170612) do
 
   create_table "documentos", force: :cascade do |t|
     t.date "fecha_recepcion"
-    t.integer "no_memo"
+    t.string "no_memo"
     t.bigint "area_id", null: false
-    t.integer "no_libro"
+    t.string "no_libro"
     t.string "nombre"
     t.date "fecha_disp"
     t.string "notario"
-    t.integer "no_notaria"
-    t.integer "no_oficio_de_conclucion"
+    t.string "no_notaria"
+    t.string "no_oficio_de_conclucion"
     t.date "fecha_conclucion"
     t.string "observaciones"
     t.datetime "created_at", null: false
