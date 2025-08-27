@@ -1,57 +1,74 @@
 <div id="<%= dom_id documento %>">
-  <p>
+  <div class="hstack gap-3">
+  <p class="form-control">
     <strong>Fecha recepcion:</strong>
     <%= documento.fecha_recepcion %>
   </p>
-
-  <p>
+  <p class="form-control">
     <strong>No memo:</strong>
     <%= documento.no_memo %>
   </p>
-
-  <p>
+  <p class="form-control" >
     <strong>Area:</strong>
-    <%= documento.area_id_id %>
+    <%= documento.area.nombre %>
   </p>
-
-  <p>
+  </div>
+  <div class="hstack gap-3">
+  <p class="form-control">
     <strong>No libro:</strong>
     <%= documento.no_libro %>
   </p>
 
-  <p>
+  <p class="form-control">
     <strong>Nombre:</strong>
     <%= documento.nombre %>
   </p>
 
-  <p>
+  <p class="form-control" >
     <strong>Fecha disp:</strong>
     <%= documento.fecha_disp %>
   </p>
-
-  <p>
+  </div>
+  <div class="hstack gap-3">
+  <p class="form-control">
     <strong>Notario:</strong>
     <%= documento.notario %>
   </p>
-
-  <p>
+  <p class="form-control">
     <strong>No notaria:</strong>
     <%= documento.no_notaria %>
   </p>
-
-  <p>
+  <p class="form-control" >
     <strong>No oficio de conclucion:</strong>
     <%= documento.no_oficio_de_conclucion %>
   </p>
-
-  <p>
+  </div>
+  <div class="hstack gap-3">
+  <p class="form-control">
     <strong>Fecha conclucion:</strong>
     <%= documento.fecha_conclucion %>
   </p>
-
-  <p>
+  <p class="form-control">
+    <strong>Responsable del Paciente:</strong>
+    <%= documento.responsable_de_paciente %>
+  </p>
+  <p class="form-control">
     <strong>Observaciones:</strong>
     <%= documento.observaciones %>
   </p>
-
+  </div>
+  <div class="hstack gap-3">
+    <% if documento.archivo.attached? %>
+      <p class="form-control">
+        <strong>Archivo adjunto:</strong>
+        <% if documento.archivo.image? %>
+          <%= link_to rails_blob_path(documento.archivo, disposition: "attachment") do %>
+            <%= image_tag documento.archivo,width:200 %>
+          <% end %>
+        <% else %>
+          <%= link_to documento.archivo.filename, url_for(documento.archivo),target: :"_blanck",class: :"message-file"%>        
+        <% end %>
+      </p>
+    <% end %>
+  </div>
 </div>

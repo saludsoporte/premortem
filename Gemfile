@@ -20,6 +20,9 @@ gem 'will_paginate', '~> 4.0'
 gem 'will_paginate-bootstrap-style'
 gem "bootstrap"#, "~> 5.2.2"
 gem 'devise'
+gem 'active_storage_validations'
+gem "pixelpress"
+gem "htmlbeautifier"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"

@@ -1,44 +1,47 @@
-<div class="container form-control bg-white" data-controller="documentos">
-  <% if params[:error]=="1" %>
-    <script>alert("Error: No se pudo guardar el documento. Tiene datos faltantes");</script>
-  <% end %>
+<div class="container form-control bg-white" data-controller="documentos">  
+  <% if params[:error].nil? == false %>    
+    <input id="errores" type="checkbox" checked value="<%=params[:error].to_a%>" hidden>    
+    <input id="datos" type="text" value="<%=params[:datos].to_a%>" hidden >    
+  <% else %>
+    <input id="errores" type="checkbox"  hidden> 
+  <% end %>       
     <%= form_with url:documentos_guardar_captura_path,method: :post do |f|%>
         <div class="hstack  gap-3">
-        <%= f.label :"Fecha de Recepción" %>        
+        <%= f.label :"Fecha de Recepción",id:"fr" %>        
         <%= f.date_field :fecha_recepcion ,class: "form-control" %>
-        <%= f.label :"Fecha de Disponibilidad" %>        
+        <%= f.label :"Fecha de Disponibilidad",id:"fd" %>        
         <%= f.date_field :fecha_disp ,class: "form-control" %>
         </div><br>
         <div class="hstack  gap-3">
-        <%= f.label :"Número de Memo" %>        
+        <%= f.label :"Número de Memo",id:"nm" %>        
         <%= f.text_field :no_memo ,class: "form-control" %>
-        <%= f.label :"Número de Libro" %>        
+        <%= f.label :"Número de Libro",id:"nl" %>        
         <%= f.text_field :no_libro ,class: "form-control" %>
         </div><br>
         <div class="hstack gap-3">
-        <%= f.label :"Areas" %>        
+        <%= f.label :"Areas",id:"ar" %>        
         <%= f.select(:area_id, Area.all.collect{|a| [a.nombre, a.id] }) %>
         </div><br>
         <div class="hstack gap-3">
-        <%= f.label :"Nombre" %>        
+        <%= f.label :"Nombre",id:"nom" %>        
         <%= f.text_field :nombre ,class: "form-control" %>        
-        <%= f.label :"Notario" %>        
+        <%= f.label :"Notario",id:"not" %>        
         <%= f.text_field :notario ,class: "form-control" %>
         </div><br>
         <div class="hstack gap-3">
-          <%= f.label :"Número de Notaría" %>        
+          <%= f.label :"Número de Notaría",id:"nn"   %>        
         <%= f.text_field :no_notaria ,class: "form-control" %>
-        <%= f.label :"Número de Oficio de Conclusión" %>        
+        <%= f.label :"Número de Oficio de Conclusión",id:"noc" %>        
         <%= f.text_field :no_oficio_de_conclucion ,class: "form-control" %>
         </div><br>
         <div class="hstack gap-3">      
-        <%= f.label :"Fecha de Conclusión" %>        
+        <%= f.label :"Fecha de Conclusión",id:"fc" %>        
         <%= f.date_field :fecha_conclucion ,class: "form-control" %>
-        <%= f.label :"Archivo Escaneado" %>        
+        <%= f.label :"Archivo Escaneado",id:"ac" %>        
         <%= f.file_field :archivo ,class: "form-control" %>
         </div><br>  
         <div class="hstack gap-3">
-        <%= f.label :"Observaciones" %>        
+        <%= f.label :"Observaciones"%>        
         <%= f.text_area :observaciones ,class: "form-control"  %>        
         </div><br>
         <%= f.submit "Guardar Documento" ,class: :"btn btn-sm btn-success"%>

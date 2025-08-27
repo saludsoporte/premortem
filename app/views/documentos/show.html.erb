@@ -1,10 +1,9 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @documento %>
-
-<div>
-  <%= link_to "Edit this documento", edit_documento_path(@documento) %> |
-  <%= link_to "Back to documentos", documentos_path %>
-
-  <%= button_to "Destroy this documento", @documento, method: :delete %>
+<div>  <%# link_to "Edit this documento", edit_documento_path(@documento) %>   
+  <%# button_to "Destroy this documento", @documento, method: :delete %>
 </div>
+<p style="color: green"><%= notice %></p>
+<div class="container form-control bg-white">
+  <%= link_to "Regresar al Inicio", home_index_path ,class: :"btn btn-secondary btn-sm"%>
+  <%= render @documento %>
+</div>
+

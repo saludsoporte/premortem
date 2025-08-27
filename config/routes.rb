@@ -1,4 +1,5 @@
 Rails.application.routes.draw do  
+  mount Pixelpress::Engine => "rails" if Rails.env.development?
   devise_for :users
   get 'home/index'
   root "home#index"

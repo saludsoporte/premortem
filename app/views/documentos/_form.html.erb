@@ -1,7 +1,7 @@
-<%= form_with(model: documento) do |form| %>
+<%= form_with(model: documento) do |f| %>
   <% if documento.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(documento.errors.count, "error") %> prohibited this documento from being saved:</h2>
+      <h2><%= pluralize(documento.errors.count, "errores") %> Lo siguientes datos no pueden estar vacios </h2>
 
       <ul>
         <% documento.errors.each do |error| %>
@@ -11,62 +11,50 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :fecha_recepcion, style: "display: block" %>
-    <%= form.date_field :fecha_recepcion %>
-  </div>
-
-  <div>
-    <%= form.label :no_memo, style: "display: block" %>
-    <%= form.number_field :no_memo %>
-  </div>
-
-  <div>
-    <%= form.label :area_id_id, style: "display: block" %>
-    <%= form.text_field :area_id_id %>
-  </div>
-
-  <div>
-    <%= form.label :no_libro, style: "display: block" %>
-    <%= form.number_field :no_libro %>
-  </div>
-
-  <div>
-    <%= form.label :nombre, style: "display: block" %>
-    <%= form.text_field :nombre %>
-  </div>
-
-  <div>
-    <%= form.label :fecha_disp, style: "display: block" %>
-    <%= form.date_field :fecha_disp %>
-  </div>
-
-  <div>
-    <%= form.label :notario, style: "display: block" %>
-    <%= form.text_field :notario %>
-  </div>
-
-  <div>
-    <%= form.label :no_notaria, style: "display: block" %>
-    <%= form.number_field :no_notaria %>
-  </div>
-
-  <div>
-    <%= form.label :no_oficio_de_conclucion, style: "display: block" %>
-    <%= form.number_field :no_oficio_de_conclucion %>
-  </div>
-
-  <div>
-    <%= form.label :fecha_conclucion, style: "display: block" %>
-    <%= form.date_field :fecha_conclucion %>
-  </div>
-
-  <div>
-    <%= form.label :observaciones, style: "display: block" %>
-    <%= form.text_field :observaciones %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
+  <div class="hstack  gap-3">
+        <%= f.label :"Fecha de Recepción",id:"fr" %>        
+        <%= f.date_field :fecha_recepcion ,class: "form-control" %>
+        <%= f.label :"Fecha de Disponibilidad",id:"fd" %>        
+        <%= f.date_field :fecha_disp ,class: "form-control" %>
+        </div><br>
+        <div class="hstack  gap-3">
+        <%= f.label :"Número de Memo",id:"nm" %>        
+        <%= f.text_field :no_memo ,class: "form-control" %>
+        <%= f.label :"Número de Libro",id:"nl" %>        
+        <%= f.text_field :no_libro ,class: "form-control" %>
+        </div><br>
+        <div class="hstack gap-3">
+        <%= f.label :"Areas",id:"ar" %>        
+        <%= f.select(:area_id, Area.all.collect{|a| [a.nombre, a.id] }) %>
+        </div><br>
+        <div class="hstack gap-3">
+        <%= f.label :"Nombre",id:"nom" %>        
+        <%= f.text_field :nombre ,class: "form-control" %>        
+        <%= f.label :"Notario",id:"not" %>        
+        <%= f.text_field :notario ,class: "form-control" %>
+        </div><br>
+        <div class="hstack gap-3">
+          <%= f.label :"Número de Notaría",id:"nn"   %>        
+        <%= f.text_field :no_notaria ,class: "form-control" %>
+        <%= f.label :"Número de Oficio de Conclusión",id:"noc" %>        
+        <%= f.text_field :no_oficio_de_conclucion ,class: "form-control" %>
+        </div><br>
+        <div class="hstack gap-3">      
+        <%= f.label :"Fecha de Conclusión",id:"fc" %>        
+        <%= f.date_field :fecha_conclucion ,class: "form-control" %>
+        <%= f.label :"Archivo Escaneado",id:"ac" %>        
+        <%= f.file_field :archivo ,class: "form-control" %>
+        </div><br>  
+        <div class="hstack gap-3">
+          <%= f.label :"Responsable del Paciente"%>
+          <%= f.text_field :responsable_de_paciente ,class: "form-control"  %>
+          <%= f.label :"Observaciones"%>        
+          <%= f.text_area :observaciones ,class: "form-control"  %>        
+        </div><br>
+        <%= f.submit "Guardar Documento" ,class: :"btn btn-sm btn-success"%>
 <% end %>
+<br>
+<br>
+<br>
+<br>
+<br>

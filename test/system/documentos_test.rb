@@ -14,7 +14,7 @@ class DocumentosTest < ApplicationSystemTestCase
     visit documentos_url
     click_on "New documento"
 
-    fill_in "Area id", with: @documento.area_id_id
+    fill_in "Area id", with: @documento.area_id
     fill_in "Fecha conclucion", with: @documento.fecha_conclucion
     fill_in "Fecha disp", with: @documento.fecha_disp
     fill_in "Fecha recepcion", with: @documento.fecha_recepcion
@@ -35,7 +35,7 @@ class DocumentosTest < ApplicationSystemTestCase
     visit documento_url(@documento)
     click_on "Edit this documento", match: :first
 
-    fill_in "Area id", with: @documento.area_id_id
+    fill_in "Area id", with: @documento.area_id
     fill_in "Fecha conclucion", with: @documento.fecha_conclucion
     fill_in "Fecha disp", with: @documento.fecha_disp
     fill_in "Fecha recepcion", with: @documento.fecha_recepcion

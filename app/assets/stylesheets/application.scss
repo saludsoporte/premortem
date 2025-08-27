@@ -4,6 +4,13 @@
 @import "loading";
 @import "vanilla-datetimerange-picker";
 
+.nombre_corto{
+white-space: nowrap; 
+  width: 150px; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
+  border: 1px solid #000000;
+}
 .display_update_on{
   border: green;
     border-top-style: none;
