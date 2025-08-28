@@ -40,12 +40,10 @@
     </div>
     <%= yield %>
   </body>
-  <footer style="padding-top:10px">
-    <%# unless !current_user %>
-      <div class="footer">
-        <%# will_paginate @objeto %>
-      </div>
-    <%# end %>
-    <p class="text-center text-muted">Servicios de Salud de San Luis Potosi</p>
+  <footer class="footer " >    
+    <div class="position-absolute top-50 start-50 translate-middle">
+      <%= will_paginate(@buzones,:renderer => WillPaginate::ActionView::BootstrapLinkRenderer ) %>    
+      <p style="font-size:13px;color:white">Servicios de Salud de San Luis Potosi</p>
+    </div>
   </footer>
 </html>

@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   before_action :authenticate_user!
   def index    
-    @buzones = Buzone.paginate(page:params[:page],per_page:10).all    
+    @buzones = Buzone.paginate(page:params[:page]).all    
   end
   def cargar_tabla_principal
     #buzones = Buzone.paginate(page:params[:pagina],per_page:10).all

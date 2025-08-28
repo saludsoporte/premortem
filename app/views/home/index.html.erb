@@ -1,58 +1,63 @@
 <div class="container form-control bg-white" data-controller="home">
   <% if current_user.datos_personal.nil? %>
-    <div> Ingrese sus Datos personales para poder capturar</div><br>
-      <%= form_with url: datos_personals_guardar_datos_path , method: :post do |f|%>          
-        <div class="hstack gap-3">          
-              <%= f.label "Nombre"%>
-              <%= f.text_field :nombre ,class: :'form-control'%>                
-              <%= f.label "Apellido"%>
-              <%= f.text_field :apellidos,class: :'form-control' %>                          
-        </div><br>
-        <div class="hstack gap-3">
-              <%= f.label "Puesto"%>
-              <%= f.text_field :puesto,class: :'form-control' %>                
-              <%= f.label "Titulo"%>
-              <%= f.text_field :titulo,class: :'form-control' %>                          
-        </div><br>
-        <%= f.text_field :user,value:current_user.id,hidden:true %>                          
-        <%= f.submit "Guardar Datos", class: "btn btn-primary btn-sm" %>
-      <% end %>   
-  <% else %>  
-    <%= link_to "Capturar Documento", new_documento_path %>
-  <% end %><br> 
+    <div> Ingrese sus Datos personales para poder capturar</div>
+    <br>
+    <%= form_with url: datos_personals_guardar_datos_path , method: :post do |f|%>
+      <div class="hstack gap-3">
+        <%= f.label "Nombre"%>
+        <%= f.text_field :nombre ,class: :'form-control'%>
+        <%= f.label "Apellido"%>
+        <%= f.text_field :apellidos,class: :'form-control' %>
+      </div>
+      <br>
+      <div class="hstack gap-3">
+        <%= f.label "Puesto"%>
+        <%= f.text_field :puesto,class: :'form-control' %>
+        <%= f.label "Titulo"%>
+        <%= f.text_field :titulo,class: :'form-control' %>
+      </div>
+      <br>
+      <%= f.text_field :user,value:current_user.id,hidden:true %>
+      <%= f.submit "Guardar Datos", class: "btn btn-primary btn-sm" %>
+    <% end %>
+  <% else %>
+    <%= link_to "Capturar Documento", new_documento_path,class: :"btn btn-sm btn-success" %>
+  <% end %><br>
 </div>
 <div  style="overflow:auto; height:550px">
- <table class="table table-hover letra" >    
+  <table class="table table-hover letra" >
     <% @buzones.each do |buzon| %>
       <% b = buzon.documento %>
       <thead class="table-dark">
-      <tr>
-        <th>No</th>        
-        <th>No. de Memorandum</th>
-        <th>Area responsable</th>        
-        <th>No. Libro</th>                                
-        <th>Fechas</th>        
-        <th>Observaciones</th>
-        <th>Documento</th>
-      </tr>
-    </thead>
+        <tr>
+          <th>No</th>
+          <th>No. de Memorandum</th>
+          <th>Area responsable</th>
+          <th>No. Libro</th>
+          <th>Fechas</th>
+          <th>Observaciones</th>
+          <th>Documento</th>
+        </tr>
+      </thead>
       <tr>
         <td><%= b.id %></td>
-        
         <td><%= b.no_memo %></td>
-        <td><%= b.area.nombre %></td>        
-        <td><%= b.no_libro %></td>               
+        <td><%= b.area.nombre %></td>
+        <td><%= b.no_libro %></td>
         <td rowspan="3"  style="border-right: 1px solid black;">
           <table class="table" >
             <tr>
-              <td class="table-active"><label><b>Fecha Recepcion</b></label></td><td><%= b.fecha_recepcion %></td>
+              <td class="table-active"><label><b>Fecha Recepcion</b></label></td>
+              <td><%= b.fecha_recepcion %></td>
             </tr>
             <tr>
-              <td class="table-active"><label><b>Fecha Disposición</b></label></td><td><%= b.fecha_disp %></td>
+              <td class="table-active"><label><b>Fecha Disposición</b></label></td>
+              <td><%= b.fecha_disp %></td>
             </tr>
             <tr>
-              <td class="table-active"><label><b>Fecha Conclusión</b></label></td><td><%= b.fecha_conclucion %></td>
-            </tr> 
+              <td class="table-active"><label><b>Fecha Conclusión</b></label></td>
+              <td><%= b.fecha_conclucion %></td>
+            </tr>
           </table>
         </td>
         <td rowspan="3" style="border-right: 1px solid black;"><%= b.observaciones %></td>
@@ -61,26 +66,24 @@
             image_tag "filetype-pdf-w.svg",size:"20x20"}"), 
             url_for(b.archivo),
             target: :"_blanck",class: :"btn btn-secondary btn-sm"
-          %><br><br>
+          %><br>
+          <br>
           <%= link_to raw("ver #{b.archivo.filename}"), b, class: "btn btn-primary btn-sm nombre_corto" %>
-        </td>        
-      </tr> 
-      <tr class="table-active">      
-        <th>Nombre</th>        
+        </td>
+      </tr>
+      <tr class="table-active">
+        <th>Nombre</th>
         <th>Notario</th>
-        <th>No. Notaria</th>        
-        <th>No. Oficio conclucion</th>             
-      </tr>     
-      <tr class=" table-group-divider">        
-        <td><%= b.nombre %></td>        
+        <th>No. Notaria</th>
+        <th>No. Oficio conclucion</th>
+      </tr>
+      <tr class=" table-group-divider">
+        <td><%= b.nombre %></td>
         <td><%= b.notario %></td>
         <td><%= b.no_notaria %></td>
-        <td><%= b.no_oficio_de_conclucion %></td>        
+        <td><%= b.no_oficio_de_conclucion %></td>
       </tr>
       <tr></tr>
     <% end %>
   </table>
 </div>
-  <div id="paginacion_container" class="footer">
-    <%= will_paginate(@buzones,:renderer => WillPaginate::ActionView::BootstrapLinkRenderer ) %>
-  </div>
