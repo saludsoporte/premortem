@@ -23,6 +23,8 @@ gem 'devise'
 gem 'active_storage_validations'
 gem "pixelpress"
 gem "htmlbeautifier"
+gem 'unicorn'
+
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
