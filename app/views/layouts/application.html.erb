@@ -18,19 +18,8 @@
         <%# image_tag("OfiPartLogo.png", size: "35x35") %>
         Menu       
       </a>
-      <%= image_tag("thumbnail_Logos-Sin_Límites_Mesa de trabajo 1.png",size:"250x50") %> &nbsp;      
-      <%# link_to raw("#{image_tag("pencil.svg")} Capturar documento") ,documentos_captura_path(edit:false),class: :"sin_adorno"%> 
-      
-      <%# link_to  raw("#{image_tag("list-task.svg")} Generar Correspondencia"), relaciones_path,class: :"sin_adorno"%>
-      
-      <%# if current_user.oficialia %>
-        <%# link_to  raw("#{image_tag("oficialia.png",size:"20x20")} Oficialia"), relacion_oficials_path,class: :"sin_adorno"%>
-      
-      <%# end %>
-      <%# link_to raw("#{image_tag("file-earmark-bar-graph.svg")} Reportes"),reportes_path,class: :"sin_adorno"%>
+      <%= image_tag("thumbnail_Logos-Sin_Límites_Mesa de trabajo 1.png",size:"250x50") %> &nbsp;   
       &nbsp; <div class="vl"></div>
-      <!--<button id="btn_buscar" class="btn btn-sm btn-success" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><span><%=image_tag("search.svg")%></span> Buscar</button>
-      -->
     </nav>
     <div class="derecha " style="position:relative;top: -40px;"  >
       <div class="input-group">
@@ -40,9 +29,11 @@
     </div>
     <%= yield %>
   </body>
-  <footer class="footer " >    
+  <footer class="footer " >        
     <div class="position-absolute top-50 start-50 translate-middle">
-      <%= will_paginate(@buzones,:renderer => WillPaginate::ActionView::BootstrapLinkRenderer ) %>    
+      <% if @buzones.nil? == false %>
+        <%= will_paginate(@buzones,:renderer => WillPaginate::ActionView::BootstrapLinkRenderer ) %>    
+      <%  end %>
       <p style="font-size:13px;color:white">Servicios de Salud de San Luis Potosi</p>
     </div>
   </footer>
