@@ -66,9 +66,14 @@
             image_tag "filetype-pdf-w.svg",size:"20x20"}"), 
             url_for(b.archivo),
             target: :"_blanck",class: :"btn btn-secondary btn-sm"
-          %><br>
+          %>
+          <br>
+          <br>
+          <%= link_to "Editar documento", edit_documento_path(b), class: "btn btn-warning btn-sm" %>
+          <br>
           <br>
           <%= link_to raw("ver #{b.archivo.filename}"), b, class: "btn btn-primary btn-sm nombre_corto" %>
+          
         </td>
       </tr>
       <tr class="table-active">
