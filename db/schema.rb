@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_08_27_202524) do
+ActiveRecord::Schema[7.1].define(version: 2025_09_02_193819) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -96,19 +96,29 @@ ActiveRecord::Schema[7.1].define(version: 2025_08_27_202524) do
 
   create_table "documentos", force: :cascade do |t|
     t.date "fecha_recepcion"
-    t.string "no_memo"
+    t.string "no_documento"
     t.bigint "area_id", null: false
     t.string "no_libro"
-    t.string "nombre"
+    t.string "nombre_paciente"
     t.date "fecha_disp"
-    t.string "notario"
+    t.string "nombre_notario"
     t.string "no_notaria"
     t.string "no_oficio_de_conclucion"
     t.date "fecha_conclucion"
     t.string "observaciones"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "responsable_de_paciente"
+    t.string "nombre_responsable"
+    t.string "apellido_p_paciente"
+    t.string "apellido_m_paciente"
+    t.string "apellido_p_notario"
+    t.string "apellido_m_notario"
+    t.string "apellido_p_responsable"
+    t.string "apellido_m_responsable"
+    t.string "nombre_res_op"
+    t.string "apellido_p_res_op"
+    t.string "apellido_m_res_op"
+    t.string "no_instrumento"
     t.index ["area_id"], name: "index_documentos_on_area_id"
   end
 
