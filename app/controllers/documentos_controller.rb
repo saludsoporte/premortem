@@ -141,6 +141,7 @@ class DocumentosController < ApplicationController
 
   # POST /documentos or /documentos.json
   def create
+    
     @documento = Documento.new(documento_params)
 
     respond_to do |format|

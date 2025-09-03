@@ -329,7 +329,7 @@ input:checked + .slider:before {
 }
 
 .degradado {
-    background: -webkit-linear-gradient(rgb(25, 157, 218), rgb(238, 250, 252));
+    background: -webkit-linear-gradient(rgb(17, 167, 12), rgb(238, 250, 252));
     //background: -moz-linear-gradient(rgb(255, 243, 161), rgb(236, 236, 225));
     //background: -o-linear-gradient(rgb(255, 243, 161), rgb(255, 255, 255));
 }
@@ -449,7 +449,7 @@ footer {
 }
 
 .bg-white-s {
-    background-color: whitesmoke;
+    background-color: rgb(250, 247, 247);
 }
 
 .padding-top {

@@ -21,6 +21,18 @@ export default class extends Controller {
       console.log($("#datos").val().match(/\'\"\,"+/g));
       cambiarInputs($("#errores").val().match(/\d+/g),$("#datos").val().split(",") );
     }
+    $("#AJ").prop('checked',true)
+     $("#area_id").val(432);
+    $("#AJ").on('change', function() {
+      if ($(this).is(':checked')) {   
+        $("#area_id").val(432)
+      }
+    });
+    $("#R1").on("change", function () {
+      if ($(this).is(":checked")) {
+        $("#area_id").val(192);
+      }
+    });
   }
 
 }

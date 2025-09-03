@@ -1,3 +1,4 @@
+<div data-controller="documentos">
 <%= form_with(model: documento) do |f| %>
   <% if documento.errors.any? %>
     <div style="color: red">
@@ -18,56 +19,76 @@
     <%= f.label :"Fecha de Conclusión",id:"fc" %>
     <%= f.date_field :fecha_conclucion ,class: "form-control" %>
   </div><br>
-  <!-- asuntos juridicos AJ  oficialia R1/3-->
-  <div class="hstack gap-3">
-    <b><%= f.label :"Nombre Paciente",id:"nom" %></b>
-    <%= f.text_field :nombre_paciente ,class: "form-control" %>
-    <b><%= f.label :"Apellido Paterno",id:"ap" %></b>
-    <%= f.text_field :apellido_p_paterno ,class: "form-control" %>
-    <b><%= f.label :"Apellido Materno",id:"am" %></b>
-    <%= f.text_field :apellido_m_paterno ,class: "form-control" %>
+  <div class="hstack gap-3">    
+    <b><%= f.label :"Número de documento",id:"nm" %></b>
+    <%= f.text_field :no_documento ,class: "form-control" %>
   </div>
-  <br>
-  <div class="hstack gap-3">
-    <b><%= f.label :"Nombre de Notario",id:"not" %></b>
-    <%= f.text_field :nombre_notario ,class: "form-control" %>
-    <b><%= f.label :"Apellido Paterno de Notario",id:"not" %></b>
-    <%= f.text_field :apellido_p_notario ,class: "form-control" %>
-    <b><%= f.label :"Apellido Materno de Notario",id:"not" %></b>
-    <%= f.text_field :apellido_m_notario ,class: "form-control" %>
-  </div>
-  <div class="hstack  gap-3">
-    <b><%= f.label :"Número de Memo",id:"nm" %></b>
-    <%= f.text_field :no_memo ,class: "form-control" %>
+  
+  <table class="table table-bordered" style="font-size:13px">
+    <thead class="table-dark">
+      <td></td>
+      <td>Nombre</td>
+      <td>Apellido Paterno</td>
+      <td>Apellido Materno</td>
+    </thead>
+    <tr>
+      <td class="table-dark">Paciente</td>
+      <td><%= f.text_field :nombre_paciente ,class: "form-control" %></td>
+      <td><%= f.text_field :apellido_p_paterno ,class: "form-control" %></td>
+      <td><%= f.text_field :apellido_m_paterno ,class: "form-control" %></td>
+    </tr>
+    <tr>
+      <td class="table-dark">Notario</td>
+      <td><%= f.text_field :nombre_notario ,class: "form-control" %> </td>
+      <td><%= f.text_field :apellido_p_notario ,class: "form-control" %></td>
+      <td><%= f.text_field :apellido_m_notario ,class: "form-control" %></td>
+    </tr>
+    <tr>
+      <td class="table-dark">Responsable</td>
+      <td><%= f.text_field :nombre_responsable ,class: "form-control" %> </td>
+      <td><%= f.text_field :apellido_p_responsable ,class: "form-control" %></td>
+      <td><%= f.text_field :apellido_m_responsable ,class: "form-control" %></td>
+    </tr>
+    <tr>
+      <td class="table-dark">2° Responsable (opcional)</td>
+      <td><%= f.text_field :nombre_responsable ,class: "form-control" %> </td>
+      <td><%= f.text_field :apellido_p_responsable ,class: "form-control" %></td>
+      <td><%= f.text_field :apellido_m_responsable ,class: "form-control" %></td>
+    </tr>
+  </table>  
+  <div class="hstack  gap-3">    
+    <b><%= f.label :"Número de Instrumento" %></b>
+    <%= f.text_field :no_instrumento ,class: "form-control" %>
     <b><%= f.label :"Número de Libro",id:"nl" %></b>
     <%= f.text_field :no_libro ,class: "form-control" %>
   </div><br>
+  <!-- asuntos juridicos AJ 432  oficialia R1/3 195 -->
   <div class="hstack gap-3">
-        <%= f.label :"Areas",id:"ar" %>        
-        <%= f.select(:area_id, Area.all.collect{|a| [a.nombre, a.id] }) %>
-        </div><br>
-       
-        <div class="hstack gap-3">
-          <%= f.label :"Número de Notaría",id:"nn"   %>        
-        <%= f.text_field :no_notaria ,class: "form-control" %>
-        <%= f.label :"Número de Oficio de Conclusión",id:"noc" %>        
-        <%= f.text_field :no_oficio_de_conclucion ,class: "form-control" %>
-        </div><br>
-        <div class="hstack gap-3">      
-        
-        <%= f.label :"Archivo Escaneado",id:"ac" %>        
-        <%= f.file_field :archivo ,class: "form-control" %>
-        </div><br>  
-        <div class="hstack gap-3">
-          <%= f.label :"Responsable del Paciente"%>
-          <%= f.text_field :responsable_de_paciente ,class: "form-control"  %>
-          <%= f.label :"Observaciones"%>        
-          <%= f.text_area :observaciones ,class: "form-control"  %>        
-        </div><br>
-        <%= f.submit "Guardar Documento" ,class: :"btn btn-sm btn-success"%>
+    <input id="AJ" type="radio" name="area">
+    <label for='AJ'>Asuntos Jurídicos</label>
+    <input id="R1" type="radio" name="area" >
+    <label for='R1'>Oficialia de Partes</label>   
+    <input id="area_id" name="area_id" type="number" hidden>    
+  </div><br>
+  <div class="hstack gap-3">
+    <b><%= f.label :"Número de Notaría",id:"nn"   %></b>
+    <%= f.text_field :no_notaria ,class: "form-control" %>
+    <b><%= f.label :"Número de Oficio de Conclusión",id:"noc" %></b>
+    <%= f.text_field :no_oficio_de_conclucion ,class: "form-control" %>
+  </div><br>
+  <div class="hstack gap-3">              
+    <b><%= f.label :"Archivo Escaneado",id:"ac" %>        </b>
+    <%= f.file_field :archivo ,class: "form-control" %>
+  </div><br>  
+  <div class="hstack gap-3">
+    <%= f.label :"Observaciones"%>        
+    <%= f.text_area :observaciones ,class: "form-control"  %>        
+  </div><br>
+  <%= f.submit "Guardar Documento" ,class: :"btn btn-sm btn-success"%>
 <% end %>
 <br>
 <br>
 <br>
 <br>
 <br>
+</div>
