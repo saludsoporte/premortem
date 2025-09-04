@@ -140,8 +140,9 @@ class DocumentosController < ApplicationController
   end
 
   # POST /documentos or /documentos.json
-  def create
-    
+  def create            
+    params[:documento][:area_id]=params[:area_id]
+    logger.debug "**************** parametros ***************"+documento_params.to_s    
     @documento = Documento.new(documento_params)
 
     respond_to do |format|
@@ -200,6 +201,26 @@ class DocumentosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def documento_params
-      params.require(:documento).permit(:fecha_recepcion, :no_memo, :area_id, :no_libro, :nombre, :fecha_disp, :notario, :no_notaria, :no_oficio_de_conclucion, :fecha_conclucion,:responsable_de_paciente, :observaciones,:archivo)
+      params.require(:documento).permit(:fecha_recepcion,
+        :no_documento,
+        :area_id, 
+        :no_libro, 
+        :nombre_paciente,
+        :apellido_p_paciente,
+        :apellido_m_paciente,
+        :nombre_responsable,
+        :apellido_p_responsable,
+        :apellido_m_responsable,
+        :nombre_notario,
+        :apellido_p_notario,
+        :apellido_m_notario,
+        :no_instrumento,
+        :fecha_disp,        
+        :no_notaria,
+        :no_oficio_de_conclucion,
+        :fecha_conclucion,
+        :responsable_de_paciente,
+        :observaciones,
+        :archivo)
     end
 end

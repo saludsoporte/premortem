@@ -1,61 +1,87 @@
-<div id="<%= dom_id documento %>">
+<div id="<%= dom_id documento %>"><br>
   <div class="hstack gap-3">
-  <p class="form-control">
-    <strong>Fecha recepcion:</strong>
-    <%= documento.fecha_recepcion %>
-  </p>
-  <p class="form-control">
-    <strong>No memo:</strong>
-    <%= documento.no_memo %>
-  </p>
-  <p class="form-control" >
-    <strong>Area:</strong>
-    <%= documento.area.nombre %>
-  </p>
+    <p class="form-control">
+      <strong>Fecha recepcion:</strong>
+      <%= documento.fecha_recepcion %>
+    </p>
+    <p class="form-control" >
+      <strong>Fecha dispocición:</strong>
+      <%= documento.fecha_disp %>
+    </p>
+    <p class="form-control">
+      <strong>Fecha conclución:</strong>
+      <%= documento.fecha_conclucion %>
+    </p>
   </div>
   <div class="hstack gap-3">
-  <p class="form-control">
-    <strong>No libro:</strong>
-    <%= documento.no_libro %>
-  </p>
-
-  <p class="form-control">
-    <strong>Nombre:</strong>
-    <%= documento.nombre %>
-  </p>
-
-  <p class="form-control" >
-    <strong>Fecha disp:</strong>
-    <%= documento.fecha_disp %>
-  </p>
+    <p class="form-control">
+      <strong>No documento:</strong>
+      <%= documento.no_documento %>
+    </p>
   </div>
   <div class="hstack gap-3">
-  <p class="form-control">
-    <strong>Notario:</strong>
-    <%= documento.notario %>
-  </p>
-  <p class="form-control">
-    <strong>No notaria:</strong>
-    <%= documento.no_notaria %>
-  </p>
-  <p class="form-control" >
-    <strong>No oficio de conclucion:</strong>
-    <%= documento.no_oficio_de_conclucion %>
-  </p>
+    <p class="form-control">
+      <strong>Nombre completo del Paciente:</strong>
+      <%= documento.nombre_paciente %>
+      <%= documento.apellido_p_paciente %>
+      <%= documento.apellido_m_paciente %>
+    </p>
   </div>
   <div class="hstack gap-3">
-  <p class="form-control">
-    <strong>Fecha conclucion:</strong>
-    <%= documento.fecha_conclucion %>
-  </p>
-  <p class="form-control">
-    <strong>Responsable del Paciente:</strong>
-    <%= documento.responsable_de_paciente %>
-  </p>
-  <p class="form-control">
-    <strong>Observaciones:</strong>
-    <%= documento.observaciones %>
-  </p>
+    <p class="form-control">
+      <strong>Nombre completo del Notario:</strong>
+      <%= documento.nombre_notario %>
+      <%= documento.apellido_p_notario %>
+      <%= documento.apellido_m_notario %>
+    </p>
+  </div>
+  <div class="hstack gap-3">
+    <p class="form-control">
+      <strong>Nombre completo del Responsable:</strong>
+      <%= documento.nombre_responsable %>
+      <%= documento.apellido_p_responsable %>
+      <%= documento.apellido_m_responsable %>
+    </p>
+  </div>
+  <div class="hstack gap-3">
+    <p class="form-control">
+      <strong>Nombre completo de un 2° Responsable:</strong>
+      <%= documento.nombre_res_op %>
+      <%= documento.apellido_p_res_op %>
+      <%= documento.apellido_m_res_op %>
+    </p>
+  </div>
+  <div class="hstack gap-3">
+    <p class="form-control" >
+      <strong>No Instrumento:</strong>
+      <%= documento.no_instrumento %>
+    </p>
+    <p class="form-control">
+      <strong>No libro:</strong>
+      <%= documento.no_libro %>
+    </p>
+  </div>
+  <div class="hstack gap-3">
+    <p class="form-control">
+      <strong>Area:</strong>
+      <%= documento.area.nombre %>
+    </p>
+  </div>
+  <div class="hstack gap-3">
+    <p class="form-control">
+      <strong>No notaria:</strong>
+      <%= documento.no_notaria %>
+    </p>
+    <p class="form-control" >
+      <strong>No oficio de conclucion:</strong>
+      <%= documento.no_oficio_de_conclucion %>
+    </p>
+  </div>
+  <div class="hstack gap-3">
+    <p class="form-control">
+      <strong>Observaciones:</strong>
+      <%= documento.observaciones %>
+    </p>
   </div>
   <div class="hstack gap-3">
     <% if documento.archivo.attached? %>
@@ -66,9 +92,14 @@
             <%= image_tag documento.archivo,width:200 %>
           <% end %>
         <% else %>
-          <%= link_to documento.archivo.filename, url_for(documento.archivo),target: :"_blanck",class: :"message-file"%>        
+          <%= link_to documento.archivo.filename, url_for(documento.archivo),target: :"_blanck",class: :"message-file"%>
         <% end %>
       </p>
     <% end %>
   </div>
 </div>
+<br>
+<br>
+<br>
+<br>
+<br>
