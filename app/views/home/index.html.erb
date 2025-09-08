@@ -22,6 +22,7 @@
     <% end %>
   <% else %>
     <%= link_to "Capturar Documento", new_documento_path,class: :"btn btn-sm btn-success" %>
+    <button id="btn_buscar" class="btn btn-sm btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><span><%=image_tag("search.svg")%></span> Busqueda</button>
   <% end %><br>
 </div>
 <div  style="overflow:auto; height:550px">
@@ -69,7 +70,9 @@
           %>
           <br>
           <br>
-          <%= link_to "Editar documento", edit_documento_path(b), class: "btn btn-warning btn-sm" %>
+          <% if current_user.rol == 1 %>
+            <%= link_to "Editar documento", edit_documento_path(b), class: "btn btn-warning btn-sm" %>
+          <%end %>
           <br>
           <br>
           <%= link_to raw("ver #{b.archivo.filename}"), b, class: "btn btn-primary btn-sm nombre_corto" %>
@@ -91,4 +94,15 @@
       <tr></tr>
     <% end %>
   </table>
+</div>
+<div class="offcanvas offcanvas-end  w-50 " tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasRightLabel">Busqueda</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="bg-white " style="font-size:12px" data-controller="home">
+      <%= render "partials/menu_busqueda"%>
+    </div>
+  </div>
 </div>

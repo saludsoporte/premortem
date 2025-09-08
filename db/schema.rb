@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_09_02_193819) do
+ActiveRecord::Schema[7.1].define(version: 2025_09_08_180047) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -50,6 +50,35 @@ ActiveRecord::Schema[7.1].define(version: 2025_09_02_193819) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "busquedas", force: :cascade do |t|
+    t.string "nombre_p"
+    t.string "apellido_pp"
+    t.string "apellido_mp"
+    t.string "nombre_n"
+    t.string "apellido_pn"
+    t.string "apellido_mn"
+    t.string "nombre_r"
+    t.string "apellido_pr"
+    t.string "apellido_mr"
+    t.string "nombre_ro"
+    t.string "apellido_pro"
+    t.string "apellido_mro"
+    t.string "no_documento"
+    t.string "area"
+    t.date "f_recp"
+    t.date "f_disp"
+    t.date "f_clon"
+    t.string "no_inst"
+    t.string "no_libro"
+    t.string "no_notaria"
+    t.string "no_conclusion"
+    t.boolean "activa", default: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_busquedas_on_user_id"
+  end
+
   create_table "buzones", force: :cascade do |t|
     t.integer "area_id"
     t.boolean "direccion"
@@ -71,6 +100,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_09_02_193819) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "curp"
     t.index ["user_id"], name: "index_datos_personals_on_user_id"
   end
 
@@ -148,12 +178,14 @@ ActiveRecord::Schema[7.1].define(version: 2025_09_02_193819) do
     t.datetime "updated_at", null: false
     t.string "username"
     t.integer "area_id"
+    t.integer "rol", default: 0, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "busquedas", "users"
   add_foreign_key "buzones", "documentos"
   add_foreign_key "buzones", "estados"
   add_foreign_key "datos_personals", "users"

@@ -1,0 +1,76 @@
+<div class="container-fluid">
+  <%= form_with url: home_set_busqueda_path, method: :post do |s| %>
+  <ul class="nav nav-tabs" id="myTab" role="tablist" style="font-size:10px">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="dest-tab" data-bs-toggle="tab" data-bs-target="#paciente" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Paciente</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="oca-tab" data-bs-toggle="tab" data-bs-target="#notario" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Notario</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="plant-tab" data-bs-toggle="tab" data-bs-target="#responsable" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Responsable</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="plant-tab" data-bs-toggle="tab" data-bs-target="#responsableOpcional" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Resp. Opcional</button>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="paciente" role="tabpanel" aria-labelledby="home-tab" tabindex="0">      <br>
+      <%= s.text_field :nombre_paciente, class: "form-control", placeholder: "Ingrese el nombre del paciente" %>  <br>
+      <%= s.text_field :apellido_paterno, class: "form-control", placeholder: "Ingrese el apellido paterno del paciente" %> <br>
+      <%= s.text_field :apellido_materno, class: "form-control", placeholder: "Ingrese el apellido materno del paciente" %> <br>
+    </div>
+    <div class="tab-pane fade" id="notario" role="tabpanel" aria-labelledby="home-tab" tabindex="0"> <br>
+      <%= s.text_field :nombre_notario, class: "form-control", placeholder: "Ingrese el nombre del notario" %><br>
+      <%= s.text_field :apellido_paterno_notario, class: "form-control", placeholder: "Ingrese el apellido paterno del notario" %><br>
+      <%= s.text_field :apellido_materno_notario, class: "form-control", placeholder: "Ingrese el apellido materno del notario" %><br>
+    </div>
+    <div class="tab-pane fade" id="responsable" role="tabpanel" aria-labelledby="home-tab" tabindex="0"><br>
+      <%= s.text_field :nombre_responsable, class: "form-control", placeholder: "Ingrese el nombre del responsable" %><br>
+      <%= s.text_field :apellido_paterno_responsable, class: "form-control", placeholder: "Ingrese el apellido paterno del responsable" %><br>
+      <%= s.text_field :apellido_materno_responsable, class: "form-control", placeholder: "Ingrese el apellido materno del responsable" %><br>
+    </div>
+    <div class="tab-pane fade" id="responsableOpcional" role="tabpanel" aria-labelledby="home-tab" tabindex="0">      <br>
+      <%= s.text_field :nombre_responsable_opcional, class: "form-control", placeholder: "Ingrese el nombre del responsable opcional" %><br>
+      <%= s.text_field :apellido_paterno_responsable_opcional, class: "form-control", placeholder: "Ingrese el apellido paterno del responsable opcional" %><br>
+      <%= s.text_field :apellido_materno_responsable_opcional, class: "form-control", placeholder: "Ingrese el apellido materno del responsable opcional" %><br>
+    </div>
+  </div>
+  <li><hr class="sin_decored nav-item-divider"></li>
+  <label>No. de Documento</label>
+  <%= s.text_field :no_documento, class: "form-control", placeholder: "Ingrese el número de documento" %>
+  <label>Área Responsable</label>
+  <div class="hstack gap-3">
+    <%= s.radio_button :area, "432" %>    
+    <label for='area_432'>Asuntos Jurídicos</label>
+    <%= s.radio_button :area, "195" %>
+    <label for='area_195'>Oficialia de Partes</label>
+    <%= s.radio_button :area, "ambos" %>
+    <label for='area_ambos'>Ambas</label>
+  </div>
+  <li><hr class="sin_decored nav-item-divider"></li>
+  <div class="hstack gap-3">
+    <label>Fecha de Recepción</label>
+    <%= s.date_field :fecha_recepcion, class: "form-control" %>
+    <label>No. de Instrumento de</label>
+    <%= s.text_field :no_instrumento, class: "form-control" %>
+  </div>
+  <div class="hstack gap-3">
+    <label>Fecha de Disposición</label>
+    <%= s.date_field :fecha_disposicion, class: "form-control" %>
+    <label>No. Libro</label>
+    <%= s.text_field :no_libro, class: "form-control" %>
+  </div><br>
+  <div class="hstack gap-3">
+    <label>Fecha de Conclusión</label>
+    <%= s.date_field :fecha_conclusion, class: "form-control" %>
+    <label>No. de Notaria</label>
+    <%= s.text_field :no_notaria, class: "form-control" %>
+  </div><br>
+  <div class="hstack gap-3">
+    <label>No. Of de Conclusión</label>
+    <%= s.text_field :no_of_conclusion, class: "form-control" %>
+    <%= s.submit "Buscar" ,class: :"btn btn-primary"%>
+  </div>
+  <% end %>
+</div>

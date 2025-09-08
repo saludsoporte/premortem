@@ -6,6 +6,7 @@ class User < ApplicationRecord
   
   validate :validate_username
   validate :username  
+  has_one :busqueda, dependent: :destroy
   has_one :datos_personal, dependent: :destroy  
   attr_writer :login
 

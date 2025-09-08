@@ -1,0 +1,47 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nombre_p: MyString
+  apellido_pp: MyString
+  apellido_mp: MyString
+  nombre_n: MyString
+  apellido_pn: MyString
+  apellido_mn: MyString
+  nombre_r: MyString
+  apellido_pr: MyString
+  apellido_mr: MyString
+  nombre_ro: MyString
+  apellido_pro: MyString
+  apellido_mro: MyString
+  no_documento: MyString
+  area: MyString
+  f_recp: 2025-09-08
+  f_disp: 2025-09-08
+  f_clon: 2025-09-08
+  no_inst: MyString
+  no_libro: MyString
+  no_notaria: MyString
+  no_conclusion: MyString
+
+two:
+  nombre_p: MyString
+  apellido_pp: MyString
+  apellido_mp: MyString
+  nombre_n: MyString
+  apellido_pn: MyString
+  apellido_mn: MyString
+  nombre_r: MyString
+  apellido_pr: MyString
+  apellido_mr: MyString
+  nombre_ro: MyString
+  apellido_pro: MyString
+  apellido_mro: MyString
+  no_documento: MyString
+  area: MyString
+  f_recp: 2025-09-08
+  f_disp: 2025-09-08
+  f_clon: 2025-09-08
+  no_inst: MyString
+  no_libro: MyString
+  no_notaria: MyString
+  no_conclusion: MyString
