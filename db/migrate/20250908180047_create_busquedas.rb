@@ -24,6 +24,7 @@ class CreateBusquedas < ActiveRecord::Migration[7.1]
       t.string :no_conclusion
       t.boolean :activa, default: false     
       t.references :user, null: false, foreign_key: true 
+      t.string :observaciones
       t.timestamps
     end
   end

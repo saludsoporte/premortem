@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   post "documentos/guardar_captura", to: "documentos#guardar_captura"
   post "home/cargar_tabla_principal", to: "home#cargar_tabla_principal"
   post "home/set_busqueda", to: "home#set_busqueda"
+  post "home/limpiar_busqueda", to: "home#limpiar_busqueda"
 
   resources :datos_personals
   resources :documentos

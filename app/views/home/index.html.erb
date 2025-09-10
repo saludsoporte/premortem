@@ -23,6 +23,7 @@
   <% else %>
     <%= link_to "Capturar Documento", new_documento_path,class: :"btn btn-sm btn-success" %>
     <button id="btn_buscar" class="btn btn-sm btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><span><%=image_tag("search.svg")%></span> Busqueda</button>
+    <%= link_to "Limpiar busqueda", home_limpiar_busqueda_path, method: :post, class: "btn btn-sm btn-warning" %>
   <% end %><br>
 </div>
 <div  style="overflow:auto; height:550px">

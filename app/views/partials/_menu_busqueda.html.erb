@@ -70,7 +70,9 @@
   <div class="hstack gap-3">
     <label>No. Of de Conclusión</label>
     <%= s.text_field :no_of_conclusion, class: "form-control" %>
-    <%= s.submit "Buscar" ,class: :"btn btn-primary"%>
+    <label>Observaciones</label>
+    <%= s.text_field :observaciones, class: "form-control" %>
   </div>
+  <%= s.submit "Buscar" ,class: :"btn btn-primary"%>
   <% end %>
 </div>
