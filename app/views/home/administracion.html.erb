@@ -1,0 +1,30 @@
+<div class="container form-control bg-white" data-controller="home">
+  <h3>Administración</h3>  
+  <table class="table table-hover letra" >
+    <thead class="table-dark">
+      <tr>
+        <th>Nombre</th>        
+        <th>Titulo</th>
+        <th>Puesto</th>        
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+  <% @usuarios.each do |usuario| %>
+    <% unless usuario.datos_personal.nil? %>
+      <tr>
+        <td><%= usuario.datos_personal.nombre_completo %></td>
+        <td><%= usuario.datos_personal.titulo %></td>
+        <td><%= usuario.datos_personal.puesto %></td>
+        <td>
+            <%= link_to raw("#{image_tag("binoculars.svg")} ver"), datos_personal_path(usuario.datos_personal.id), class: "btn btn-sm btn-primary" %>
+            <%= link_to raw("#{image_tag("pencil-square.svg")} editar"), edit_datos_personal_path(usuario.id), class: "btn btn-sm naranja_sin_adorno" %>            
+            <%= link_to raw("#{image_tag("trash.svg")} eliminar"), home_eliminar_path(id:usuario.id), data: { confirm: '¿Estas seguro?' },class: :"btn btn-sm btn-danger" %>
+           
+        </td>        
+      </tr>
+    <% end %>
+  <% end %>
+    </tbody>
+  </table>
+</div>

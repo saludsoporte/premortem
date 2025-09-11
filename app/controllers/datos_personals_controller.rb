@@ -33,4 +33,7 @@ class DatosPersonalsController < ApplicationController
     end
     return bandera
   end
+  def show
+    @datos_personal = DatosPersonal.find(params[:id])
+  end
 end

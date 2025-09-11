@@ -19,7 +19,11 @@ Rails.application.routes.draw do
   post "home/cargar_tabla_principal", to: "home#cargar_tabla_principal"
   post "home/set_busqueda", to: "home#set_busqueda"
   post "home/limpiar_busqueda", to: "home#limpiar_busqueda"
+  get "home/administracion", to: "home#administracion"
+  post "users/cambiar_area", to: "users#cambiar_area"
+  get "home/eliminar", to: "home#eliminar"
 
   resources :datos_personals
   resources :documentos
+  resources :users
 end

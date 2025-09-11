@@ -12,6 +12,18 @@ class HomeController < ApplicationController
       @buzones = Buzone.paginate(page:params[:page]).all.order(created_at: :desc)    
     end
   end
+  def administracion
+    @usuarios = User.all.paginate(page: params[:page]).order(created_at: :desc)
+  end
+  def eliminar    
+    @usuario = User.find(params[:id])
+    if @usuario.destroy
+      flash[:success] = "Usuario eliminado exitosamente."
+    else
+      flash[:error] = "Error al eliminar usuario."
+    end
+    redirect_to home_administracion_path
+  end
   def limpiar_busqueda
     busqueda= current_user.busqueda
     busqueda.update(activa: false) if !busqueda.nil?

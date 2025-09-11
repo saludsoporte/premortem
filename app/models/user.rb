@@ -8,8 +8,9 @@ class User < ApplicationRecord
   validate :username  
   has_one :busqueda, dependent: :destroy
   has_one :datos_personal, dependent: :destroy  
+  has_one :area
   attr_writer :login
-
+  
   def update_password_with_password(params, *options)
     current_password = params.delete(:current_password)
     result = if valid_password?(current_password)
