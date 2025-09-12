@@ -1,4 +1,22 @@
 class DatosPersonalsController < ApplicationController
+  def edit
+    @datos_personal = DatosPersonal.find(params[:id])        
+  end
+  def update            
+    @datos_personal = DatosPersonal.find(params[:id])        
+    if @datos_personal.update(
+      nombre: params[:datos_personal][:nombre],
+      apellido_paterno: params[:datos_personal][:apellido_paterno],
+      apellido_materno: params[:datos_personal][:apellido_materno],
+      puesto: params[:datos_personal][:puesto],
+      titulo: params[:datos_personal][:titulo],
+      curp: params[:datos_personal][:curp]
+    )
+      redirect_to home_administracion_path(datos:true)
+    else
+      redirect_to home_administracion_path(datos:false)
+    end
+  end
   def guardar_datos
     if validar
       # Guardar los datos

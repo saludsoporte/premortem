@@ -1,0 +1,31 @@
+<%= form_with(model: @datos_personal, local: true) do |form| %>
+  <% if @datos_personal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@datos_personal.errors.count, "error") %> impidieron guardar los datos personales:</h2>
+      <ul>
+        <% @datos_personal.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-group">
+    <%= form.label :nombre, "Nombre Completo" %>
+    <%= form.text_field :nombre, class: "form-control" %>
+    <%= form.label :apellido_paterno, "Apellido Paterno" %>
+    <%= form.text_field :apellido_paterno, class: "form-control" %>
+    <%= form.label :apellido_materno, "Apellido Materno" %>
+    <%= form.text_field :apellido_materno, class: "form-control" %>
+    <%= form.label :titulo, "Título" %>
+    <%= form.text_field :titulo, class: "form-control" %>
+    <%= form.label :puesto, "Puesto" %>
+    <%= form.text_field :puesto, class: "form-control" %>
+    <%= form.label :curp, "CURP" %>
+    <%= form.text_field :curp, class: "form-control" %>
+  </div>
+  <br>
+  <div class="actions">
+    <%= form.submit "Actualizar",class: "btn btn-sm btn-success" %>
+    <%= link_to 'Volver', datos_personals_path,class: "btn btn-sm btn-secondary" %>
+  </div>
+<% end %>

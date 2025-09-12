@@ -18,9 +18,10 @@
         <td><%= usuario.datos_personal.puesto %></td>
         <td>
             <%= link_to raw("#{image_tag("binoculars.svg")} ver"), datos_personal_path(usuario.datos_personal.id), class: "btn btn-sm btn-primary" %>
-            <%= link_to raw("#{image_tag("pencil-square.svg")} editar"), edit_datos_personal_path(usuario.id), class: "btn btn-sm naranja_sin_adorno" %>            
-            <%= link_to raw("#{image_tag("trash.svg")} eliminar"), home_eliminar_path(id:usuario.id), data: { confirm: '¿Estas seguro?' },class: :"btn btn-sm btn-danger" %>
-           
+            <% unless usuario.rol == 1 %>
+              <%= link_to raw("#{image_tag("pencil-square.svg")} editar"), edit_datos_personal_path(usuario.datos_personal.id), class: "btn btn-sm naranja_sin_adorno" %>                        
+              <%= link_to raw("#{image_tag("trash.svg")} eliminar"), home_eliminar_path(id:usuario.id), data: { confirm: '¿Estas seguro?' },class: :"btn btn-sm btn-danger" %>           
+            <% end %>
         </td>        
       </tr>
     <% end %>

@@ -3,21 +3,23 @@
     <table class=" table table-bordered">
         <thead>
             <tr>
-                <th colspan="2" class="table-dark">Datos Personales</th>                
+                <th colspan="4" class="table-dark">Datos Personales</th>                
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td class="table-dark"><strong>Nombre Completo:</strong></td>
-                <td><%= @datos_personal.nombre_completo %></td>
+                <td><%= @datos_personal.nombre %></td>
+                <td><%= @datos_personal.apellido_paterno %></td>
+                <td><%= @datos_personal.apellido_materno %></td>
             </tr>
             <tr>
                 <td class="table-dark"><strong>Titulo:</strong></td>
-                <td><%= @datos_personal.titulo %></td>
+                <td colspan="3"><%= @datos_personal.titulo %></td>
             </tr>
             <tr>
                 <td class="table-dark"><strong>Puesto:</strong></td>
-                <td><%= @datos_personal.puesto %></td>
+                <td colspan="3"><%= @datos_personal.puesto %></td>
             </tr>
         </tbody>
     </table>
