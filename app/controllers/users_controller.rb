@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   def registrar
     @nuevo_usuario = User.new()
   end
-  def guardar_usuario    
+  def guardar_usuario        
     @area = Area.find(79)
     @nuevo_usuario = User.new(email:params[:user][:email],password:params[:user][:password],username:params[:user][:username],area_id:@area.id)
     if User.exists?(username:params[:user][:username])
@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     end
     if @error == 0
       if @nuevo_usuario.save
-        redirect_to user_session_path, notice: "Usuario creado exitosamente."
+        redirect_to new_datos_personal_path(user:@nuevo_usuario.id), notice: "Usuario creado exitosamente."
       else
         @error = 5
       end

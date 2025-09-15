@@ -25,4 +25,7 @@ class Documento < ApplicationRecord
   validates :archivo, attached: true, content_type: ['application/pdf','image/png','image/jpeg'] 
 
   self.per_page=10
+  def nombre_completo
+    "#{nombre_paciente} #{apellido_p_paciente} #{apellido_m_paciente}"
+  end
 end

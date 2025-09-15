@@ -1,30 +1,7 @@
-<div class="container form-control bg-white" data-controller="home">
-  <% if current_user.datos_personal.nil? %>
-    <div> Ingrese sus Datos personales para poder capturar</div>
-    <br>
-    <%= form_with url: datos_personals_guardar_datos_path , method: :post do |f|%>
-      <div class="hstack gap-3">
-        <%= f.label "Nombre"%>
-        <%= f.text_field :nombre ,class: :'form-control'%>
-        <%= f.label "Apellido"%>
-        <%= f.text_field :apellidos,class: :'form-control' %>
-      </div>
-      <br>
-      <div class="hstack gap-3">
-        <%= f.label "Puesto"%>
-        <%= f.text_field :puesto,class: :'form-control' %>
-        <%= f.label "Titulo"%>
-        <%= f.text_field :titulo,class: :'form-control' %>
-      </div>
-      <br>
-      <%= f.text_field :user,value:current_user.id,hidden:true %>
-      <%= f.submit "Guardar Datos", class: "btn btn-primary btn-sm" %>
-    <% end %>
-  <% else %>
-    <%= link_to "Capturar Documento", new_documento_path,class: :"btn btn-sm btn-success" %>
-    <button id="btn_buscar" class="btn btn-sm btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><span><%=image_tag("search.svg")%></span> Busqueda</button>
-    <%= link_to "Limpiar busqueda", home_limpiar_busqueda_path, method: :post, class: "btn btn-sm btn-warning" %>
-  <% end %><br>
+<div class="container form-control bg-white" data-controller="home"> 
+  <%= link_to "Capturar Documento", new_documento_path,class: :"btn btn-sm btn-success" %>
+  <button id="btn_buscar" class="btn btn-sm btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><span><%=image_tag("search.svg")%></span> Busqueda</button>
+  <%= link_to "Limpiar busqueda", home_limpiar_busqueda_path, method: :post, class: "btn btn-sm btn-warning" %> 
 </div>
 <div  style="overflow:auto; height:550px">
   <table class="table table-hover letra" >
@@ -87,7 +64,7 @@
         <th>No. Oficio conclucion</th>
       </tr>
       <tr class=" table-group-divider">
-        <td><%= b.nombre_paciente %></td>
+        <td><%= b.nombre_completo %></td>
         <td><%= b.nombre_notario %></td>
         <td><%= b.no_notaria %></td>
         <td><%= b.no_oficio_de_conclucion %></td>

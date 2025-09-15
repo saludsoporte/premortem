@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get "home/administracion", to: "home#administracion"
   post "users/cambiar_area", to: "users#cambiar_area"
   get "home/eliminar", to: "home#eliminar"
+  post "home/buscar_admon", to: "home#buscar_admon"
 
   resources :datos_personals
   resources :documentos

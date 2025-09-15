@@ -10,7 +10,7 @@
     </div>
   <% end %>
   <div class="form-group">
-    <%= form.label :nombre, "Nombre Completo" %>
+    <%= form.label :nombre, "Nombre" %>
     <%= form.text_field :nombre, class: "form-control" %>
     <%= form.label :apellido_paterno, "Apellido Paterno" %>
     <%= form.text_field :apellido_paterno, class: "form-control" %>
@@ -22,10 +22,22 @@
     <%= form.text_field :puesto, class: "form-control" %>
     <%= form.label :curp, "CURP" %>
     <%= form.text_field :curp, class: "form-control" %>
+    <% if @user.nil? == false %>
+      <label>Usuario asignado: <b><%= @user.username %></b></label>
+      <%= form.label :user, "Usuario" ,hidden: true %>
+      <%= form.text_field :user, value: @user.id, class: "form-control",hidden:true %>
+    <% end %>
   </div>
-  <br>
+  <br>  
   <div class="actions">
-    <%= form.submit "Actualizar",class: "btn btn-sm btn-success" %>
-    <%= link_to 'Volver', datos_personals_path,class: "btn btn-sm btn-secondary" %>
+    <% if @user.nil? == false %>
+      <%= form.submit "Guardar",class: "btn btn-sm btn-success" %>
+    <% else %>
+      <%= form.submit "Actualizar",class: "btn btn-sm btn-success" %>
+    <% end%>
+    <%= link_to 'Volver', home_administracion_path,class: "btn btn-sm btn-secondary" %>
   </div>
 <% end %>
+<br>
+<br>
+<br>

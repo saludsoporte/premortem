@@ -13,13 +13,5 @@
   <body >
     <main class="form-signin">
       <%= yield %></main>
-  </body>
-  <footer style="padding-top:10px">
-    <% unless !current_user %>
-      <div class="footer">
-        <%= will_paginate @objeto %>
-      </div>
-    <% end %>
-    <p class="text-center text-muted">Servicios de Salud de San Luis Potosi</p>
-  </footer>
+  </body>  
 </html>

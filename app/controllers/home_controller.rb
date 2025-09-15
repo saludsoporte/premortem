@@ -11,12 +11,26 @@ class HomeController < ApplicationController
     else
       @buzones = Buzone.paginate(page:params[:page]).all.order(created_at: :desc)    
     end
+  end  
+  def buscar_admon
+    if params[:busqueda].blank?      
+      redirect_to home_administracion_path and return
+    else
+        redirect_to home_administracion_path(busqueda: params[:busqueda]) if !params[:busqueda].blank?
+    end   
   end
   def administracion
-    @usuarios = User.all.paginate(page: params[:page]).order(created_at: :desc)
+    if params[:busqueda].blank?
+      @usuarios = User.all.paginate(page: params[:page]).order(created_at: :desc)
+    else
+      @usuarios = User.joins(:datos_personal).where("username ILIKE (?) OR CONCAT_WS(' ',datos_personals.nombre,datos_personals.apellido_paterno,datos_personals.apellido_materno) ILIKE (?)",
+      "%#{params[:busqueda]}%","%#{params[:busqueda]}%").paginate(page: params[:page]).order(created_at: :desc)
+    end    
   end
   def eliminar    
     @usuario = User.find(params[:id])
+    @datos_personal= DatosPersonal.find_by(user_id: @usuario.id)
+    @datos_personal.destroy if !@datos_personal.nil?
     if @usuario.destroy
       flash[:success] = "Usuario eliminado exitosamente."
     else
