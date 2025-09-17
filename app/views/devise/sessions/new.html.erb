@@ -1,7 +1,7 @@
 <div  class="container bg-white " style="border-radius: 30px;padding:15px;border:solid;border-width:1px;border-color:lightgray;text-align:center"  data-controller='inicio-sesion'>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="row ">
-      <div class="col"><%= image_tag('Logos-Sin_Límites-03.png',size:'150x200') %></div>      
+      <div class="col"><%= image_tag('Logos-Sin_Límites-03.png',size:'120x200') %></div>      
       <div class="row ">
         <div class="col">
           <h5>Iniciar Sesión</h5>
@@ -9,8 +9,8 @@
       </div>
       <div class="col">
         <div class="form-floating">
-          <%= f.text_field :login, autofocus: true,id: :"floatingLogin",placeholder: :usuario,class: :"form-control"%>
-          <%= f.label :"correo",for: :"floatingLogin" %>
+          <%= f.text_field :login,id: :"floatingLogin",placeholder: :usuario,class: :"form-control"%>
+          <%= f.label :"usuario",for: :"floatingLogin" %>
         </div>
         <div class="form-floating">
           <%= f.password_field :password, autocomplete: "current-password",class: :"form-control",id: :"floatingPassword",placeholder: :"Password" %>
@@ -41,5 +41,5 @@
   </div>
   
   <% end %>   
-  <%= link_to "Registrarse",users_registrar_path  %> 
+  <%# link_to "Registrarse",users_registrar_path  %> 
 

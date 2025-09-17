@@ -21,7 +21,7 @@
     <%= form.label :puesto, "Puesto" %>
     <%= form.text_field :puesto, class: "form-control" %>
     <%= form.label :curp, "CURP" %>
-    <%= form.text_field :curp, class: "form-control" %>
+    <%= form.text_field :curp,maxlength:18 ,class: "form-control" %>
     <% if @user.nil? == false %>
       <label>Usuario asignado: <b><%= @user.username %></b></label>
       <%= form.label :user, "Usuario" ,hidden: true %>

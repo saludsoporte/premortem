@@ -20,12 +20,16 @@ class HomeController < ApplicationController
     end   
   end
   def administracion
-    if params[:busqueda].blank?
-      @usuarios = User.all.paginate(page: params[:page]).order(created_at: :desc)
+    if current_user.rol == 1
+      if params[:busqueda].blank?
+        @usuarios = User.all.paginate(page: params[:page]).order(created_at: :desc)
+      else
+        @usuarios = User.joins(:datos_personal).where("username ILIKE (?) OR CONCAT_WS(' ',datos_personals.nombre,datos_personals.apellido_paterno,datos_personals.apellido_materno) ILIKE (?)",
+        "%#{params[:busqueda]}%","%#{params[:busqueda]}%").paginate(page: params[:page]).order(created_at: :desc)
+      end    
     else
-      @usuarios = User.joins(:datos_personal).where("username ILIKE (?) OR CONCAT_WS(' ',datos_personals.nombre,datos_personals.apellido_paterno,datos_personals.apellido_materno) ILIKE (?)",
-      "%#{params[:busqueda]}%","%#{params[:busqueda]}%").paginate(page: params[:page]).order(created_at: :desc)
-    end    
+      redirect_to root_path, alert: "No tienes permiso para acceder a esta sección."
+    end
   end
   def eliminar    
     @usuario = User.find(params[:id])

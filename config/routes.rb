@@ -1,6 +1,6 @@
 Rails.application.routes.draw do  
   mount Pixelpress::Engine => "rails" if Rails.env.development?
-  devise_for :users
+  devise_for :users,controllers: { sessions: 'users/sessions'}
   get 'home/index'
   root "home#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

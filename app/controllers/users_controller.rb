@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
+   before_action :authenticate_user!    
   def registrar
     @nuevo_usuario = User.new()
   end
   def guardar_usuario        
     @area = Area.find(79)
-    @nuevo_usuario = User.new(email:params[:user][:email],password:params[:user][:password],username:params[:user][:username],area_id:@area.id)
+    @nuevo_usuario = User.new(email:params[:user][:email],password:params[:user][:password],username:params[:user][:username],area_id:@area.id,rol:2)
     if User.exists?(username:params[:user][:username])
         @error = 1        
     else
