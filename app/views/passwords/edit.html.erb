@@ -1,0 +1,33 @@
+<div class="container bg-white padding-div">
+  <div class="hstack gap-3">
+    <h5>Cambiar Contraseña</h5>
+    <%= link_to "Regresar" ,home_administracion_path,class: :"btn btn-sm btn-secondary"%><br>
+  </div>
+  <br>
+  <%= form_with model:@user, url:edit_password_path do |f| %>
+    <% unless params[:error].nil?%>
+      <div class="alert alert-danger">
+        <% case params[:error] %>
+        <% when "1" %>
+          <div>La contraseña no puede estar vacía</div>
+        <% when "2" %>
+          <div>Las contraseñas no coinciden</div>
+        <% end %>
+      </div>
+    <% end %>
+    <input type="text" name='id' value="<%=@user.id%>" hidden>
+    <div class="input-group">
+      <%= f.label :password, "Nueva Contraseña" ,class: :"input-group-text" %>
+      <%= f.password_field :password, autofocus: true, autocomplete: "new-password",class: :"form-control" %>
+    </div>
+    <br>
+    <div class="input-group">
+      <%= f.label :password_confirmation, "Confirmar Contraseña",class: :"input-group-text" %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password",class: :"form-control" %>
+    </div>
+    <br>
+    <div class="actions">
+      <%= f.submit "Cambiar Contraseña",class: :"btn btn-sm btn-success"%>
+    </div>
+  <% end %>
+</div>
