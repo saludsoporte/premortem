@@ -41,7 +41,7 @@
         </td>
         <td rowspan="3" style="border-right: 1px solid black;"><%= b.observaciones %></td>
         <td  rowspan="3">
-          <%= link_to raw("ver archivo <br>#{image_tag("binoculars.svg",size:"20x20")} #{
+          <%= link_to raw("ver archivo #{image_tag("binoculars.svg",size:"20x20")} #{
             image_tag "filetype-pdf-w.svg",size:"20x20"}"), 
             url_for(b.archivo),
             target: :"_blanck",class: :"btn btn-secondary btn-sm"
@@ -53,7 +53,7 @@
           <%end %>
           <br>
           <br>
-          <%= link_to raw("ver #{b.archivo.filename}"), b, class: "btn btn-primary btn-sm nombre_corto" %>
+          <%= link_to raw("Detalles #{b.archivo.filename}"), b, class: "btn btn-primary btn-sm nombre_corto" %>
           
         </td>
       </tr>
