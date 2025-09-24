@@ -1,4 +1,4 @@
-<div class="container form-control bg-white" data-controller="home">
+<div class="container form-control bg-white" data-controller="datos-personal">
 <h3>Editar Datos Personales</h3>
-<%= render 'form', datos_personal: @datos_personal %>
+<%= render partial: 'form',locals: {datos_personal: @datos_personal,nuevo:false} %>
 </div>

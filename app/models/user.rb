@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   validate :validate_username
-  validate :username  
+  validate :username
   has_one :busqueda, dependent: :destroy
   has_one :datos_personal, dependent: :destroy  
   has_one :area

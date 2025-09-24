@@ -1,7 +1,7 @@
 <div class="container form-control bg-white" data-controller="home">
   <div class="hstack gap-3">
     <h3>Administración</h3>
-    <%= link_to "Nuevo Usuario", users_registrar_path, class: "btn btn-sm btn-success" %>
+    <%= link_to "Nuevo Usuario", new_datos_personal_path, class: "btn btn-sm btn-success" %>
      <%= form_with url: home_buscar_admon_path, method: :post do |s| %>
       <div class="input-group input-group-sm ms-auto" style="width: 250px;">
         <span class="input-group-text" id="basic-addon1"><%= image_tag("search-b.min.svg", size: "20x20") %></span>

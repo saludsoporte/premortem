@@ -28,4 +28,13 @@ class Documento < ApplicationRecord
   def nombre_completo
     "#{nombre_paciente} #{apellido_p_paciente} #{apellido_m_paciente}"
   end
+  def nombre_completo_responsable
+    "#{nombre_responsable} #{apellido_p_responsable} #{apellido_m_responsable}"
+  end
+  def nombre_completo_notario
+    "#{nombre_notario} #{apellido_p_notario} #{apellido_m_notario}"
+  end
+  def nombre_completo_responsable_op
+    "#{nombre_res_op} #{apellido_p_res_op} #{apellido_m_res_op}"    
+  end
 end

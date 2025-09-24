@@ -10,18 +10,33 @@ class DatosPersonalsController < ApplicationController
       apellido_materno: params[:datos_personal][:apellido_materno],
       puesto: params[:datos_personal][:puesto],
       titulo: params[:datos_personal][:titulo],
-      curp: params[:datos_personal][:curp]
+      curp: params[:datos_personal][:curp],
+      correo:params[:datos_personal][:correo]
     )
       redirect_to home_administracion_path(datos:true)
     else
-      redirect_to home_administracion_path(datos:false)
+      render :edit, status: :unprocessable_entity
     end
   end
   def new    
     @datos_personal = DatosPersonal.new()
     @user = User.find(params[:user]) if params[:user].present?
   end
-  def create
+  def create  
+    @area = Area.find(79)  
+    usuario_nuevo = User.new(
+      username: params[:datos_personal][:usuario],
+      email: "correo@gmail.com",
+      area_id:@area.id,
+      password: params[:datos_personal][:password],
+      rol:2)
+    existe = User.find_by(username: params[:datos_personal][:usuario]).nil? == false ? true : false
+    logger.debug "********** EXISTE USUARIO ******************"+existe.to_s
+    
+    if params[:datos_personal][:curp].length == 18 && existe == false
+      usuario_nuevo.save
+    end    
+
     @datos_personal = DatosPersonal.new(
       nombre: params[:datos_personal][:nombre],
       apellido_paterno: params[:datos_personal][:apellido_paterno],
@@ -29,12 +44,12 @@ class DatosPersonalsController < ApplicationController
       puesto: params[:datos_personal][:puesto],
       titulo: params[:datos_personal][:titulo],
       curp: params[:datos_personal][:curp],
-      user_id: params[:datos_personal][:user]
+      correo:params[:datos_personal][:correo],
+      user_id: usuario_nuevo.id
     )
     if @datos_personal.save
       redirect_to home_administracion_path,notice: "Datos personales guardados exitosamente."
-    else
-      @user = User.find(params[:datos_personal][:user]) if params[:datos_personal][:user].present?
+    else      
       render :new, status: :unprocessable_entity
     end
   end

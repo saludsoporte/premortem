@@ -1,15 +1,39 @@
+<% if nuevo %>
+  <input id="nuevo" type="checkbox" checked disabled hidden >
+<% else %>
+  <input id="nuevo" type="checkbox" disabled hidden >
+<% end %>
 <%= form_with(model: @datos_personal, local: true) do |form| %>
   <% if @datos_personal.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@datos_personal.errors.count, "error") %> impidieron guardar los datos personales:</h2>
       <ul>
         <% @datos_personal.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+          <li>
+            <% case message %>
+            <% when "Curp has already been taken" %>
+              La CURP ya existe.
+            <% when "User must exist" %>
+              El usuario seleccionado ya existe.
+            <% else %>
+              <%= message %>
+            <% end %>
+          </li>
         <% end %>
       </ul>
     </div>
   <% end %>
-  <div class="form-group">
+  <% if nuevo %>
+    <div class="hstack gap-3">
+      <%= form.label :usuario, "Usuario" %>
+      <%= form.text_field :usuario, class: "form-control" %>
+      <%= form.label :password, "Contraseña" %>
+      <%= form.password_field :password, class: "form-control",disabled:true %>
+    </div> 
+  <fieldset id="datos_personales" class="form-group" disabled >
+  <% else %>   
+  <fieldset id="datos_personales" class="form-group" >
+  <% end %>
     <%= form.label :nombre, "Nombre" %>
     <%= form.text_field :nombre, class: "form-control" %>
     <%= form.label :apellido_paterno, "Apellido Paterno" %>
@@ -22,21 +46,21 @@
     <%= form.text_field :puesto, class: "form-control" %>
     <%= form.label :curp, "CURP" %>
     <%= form.text_field :curp,maxlength:18 ,class: "form-control" %>
-    <% if @user.nil? == false %>
-      <label>Usuario asignado: <b><%= @user.username %></b></label>
-      <%= form.label :user, "Usuario" ,hidden: true %>
-      <%= form.text_field :user, value: @user.id, class: "form-control",hidden:true %>
-    <% end %>
-  </div>
-  <br>  
-  <div class="actions">
-    <% if @user.nil? == false %>
-      <%= form.submit "Guardar",class: "btn btn-sm btn-success" %>
-    <% else %>
-      <%= form.submit "Actualizar",class: "btn btn-sm btn-success" %>
-    <% end%>
-    <%= link_to 'Volver', home_administracion_path,class: "btn btn-sm btn-secondary" %>
-  </div>
+    <%= form.label :correo, "Correo" %>
+    <%= form.email_field :correo,class: "form-control" %>
+    <br>
+  </fieldset>
+  <% if nuevo %>
+    <%= form.submit "Guardar",id:"sbm",class: "btn btn-sm btn-success",disabled:true %>
+  <% else%>
+    <%= form.submit "Actualizar",class: "btn btn-sm btn-success" %>
+  <% end %>
+  <%# if @user.nil? == false %>
+  <%# form.submit "Guardar",class: "btn btn-sm btn-success" %>
+  <%# else %>
+  
+  <%# end %>
+  <%# link_to 'Volver', home_administracion_path,class: "btn btn-sm btn-secondary" %>
 <% end %>
 <br>
 <br>
