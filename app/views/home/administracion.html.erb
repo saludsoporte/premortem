@@ -45,6 +45,7 @@
             </td>
             <td>
               <%= link_to "Llenar datos", new_datos_personal_path(user:usuario.id),class: :"btn btn-sm btn-success"%>
+              <%= link_to raw("#{image_tag("trash.svg")} Eliminar"), home_eliminar_path(id:usuario.id), data: { confirm: '¿Estas seguro?' },class: :"btn btn-sm btn-danger" %>
             </td>
           </tr>          
         <% end %>

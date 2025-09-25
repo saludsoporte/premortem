@@ -1,10 +1,10 @@
-<div class="container form-control bg-white" data-controller="home">
+<div class=" form-control bg-white" data-controller="home">
   <%= link_to "Capturar Documento", new_documento_path,class: :"btn btn-sm btn-success" %>
   <button id="btn_buscar" class="btn btn-sm btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><span><%=image_tag("search.svg")%></span> Busqueda</button>
   <%= link_to "Limpiar busqueda", home_limpiar_busqueda_path, method: :post, class: "btn btn-sm btn-warning" %>
 </div>
 <div  style="overflow:auto; height:550px">
-  <table class="table table-hover letra" >
+  <table class="table  letra" >
     <% @buzones.each do |buzon| %>
       <% b = buzon.documento %>
       <thead class="table-dark">
@@ -52,31 +52,31 @@
           %>
           <br>
           <br>
+          <%= link_to raw("Detalles #{b.archivo.filename}"), b, class: "btn btn-primary btn-sm nombre_corto" %>
+          <br>
+          <br>          
           <% if current_user.rol == 1 %>
             <%= link_to "Editar documento", edit_documento_path(b), class: "btn btn-warning btn-sm" %>
-          <%end %>
-          <br>
-          <br>
-          <%= link_to raw("Detalles #{b.archivo.filename}"), b, class: "btn btn-primary btn-sm nombre_corto" %>
+          <%end %>          
         </td>
       </tr>
-      <tr class="table-active">
-        <td class="table-dark">
-          <p style="color:white"><b>Paciente</b></p>
+      <tr >
+        <td class="table-active">
+          <p><b>Paciente</b></p>
         </td>
         <td style="border-right: 1px solid black;" colspan="5"><%= b.nombre_completo %></td>
       </tr>
       <tr >
-        <td class="table-dark">
-          <p style="color:white"><b>Notario</b></p>
+        <td class="table-active">
+          <p><b>Notario</b></p>
         </td>
-        <td style="border-right: 1px solid black;" colspan="5" class="table-active" ><%= b.nombre_completo_notario %></td>
+        <td style="border-right: 1px solid black;" colspan="5"  ><%= b.nombre_completo_notario %></td>
       </tr>
       <tr >        
-        <td class="table-dark">
-          <p style="color:white"><b>Responsable</b></p>
+        <td class="table-active">
+          <p><b>Responsable</b></p>
         </td>
-        <td style="border-right: 1px solid black;" colspan="5" class="table-active" >
+        <td style="border-right: 1px solid black;" colspan="5"  >
           <% if b.nombre_res_op.nil? || b.nombre_res_op == "" %>
             <%= b.nombre_completo_responsable %>
           <% else %>
