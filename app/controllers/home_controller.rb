@@ -19,6 +19,17 @@ class HomeController < ApplicationController
         redirect_to home_administracion_path(busqueda: params[:busqueda]) if !params[:busqueda].blank?
     end   
   end
+  def generar_reporte
+    fecha = Time.now().strftime("%F") 
+    @busqueda = current_user.busqueda  
+    @buzones = consultar_busqueda(@busqueda) if !@busqueda.nil? && @busqueda.activa
+    respond_to do |format|
+      format.html
+      format.xlsx {
+        response.headers['Content-Disposition'] = 'attachment; filename="Reporte_Excel_'+fecha+'.xlsx"'
+      }
+    end    
+  end
   def administracion
     if current_user.rol == 1
       if params[:busqueda].blank?

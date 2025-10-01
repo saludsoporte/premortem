@@ -2,6 +2,7 @@
   <%= link_to "Capturar Documento", new_documento_path,class: :"btn btn-sm btn-success" %>
   <button id="btn_buscar" class="btn btn-sm btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><span><%=image_tag("search.svg")%></span> Busqueda</button>
   <%= link_to "Limpiar busqueda", home_limpiar_busqueda_path, method: :post, class: "btn btn-sm btn-warning" %>
+  <%= link_to raw("#{image_tag("file-earmark-bar-graph.svg")} Reportes") ,home_generar_reporte_path(format: :xlsx),class: :"btn btn-sm btn-success",target: :'_blank' %>
 </div>
 <div  style="overflow:auto; height:550px">
   <table class="table  letra" >

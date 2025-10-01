@@ -24,7 +24,8 @@ Rails.application.routes.draw do
   post "users/cambiar_area", to: "users#cambiar_area"
   get "home/eliminar", to: "home#eliminar"
   post "home/buscar_admon", to: "home#buscar_admon"
-
+  
+  get "home/generar_reporte", to: "home#generar_reporte"
   get "passwords", to: "passwords#edit", as: :edit_password
   patch "passwords", to: "passwords#update"
   get "passwords/act_pass", to: "passwords#act_pass"

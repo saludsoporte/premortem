@@ -24,7 +24,7 @@ gem 'active_storage_validations'
 gem "pixelpress"
 gem "htmlbeautifier"
 gem 'unicorn'
-
+gem 'axlsx_rails'
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
