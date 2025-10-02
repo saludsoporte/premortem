@@ -22,7 +22,14 @@ class HomeController < ApplicationController
   def generar_reporte
     fecha = Time.now().strftime("%F") 
     @busqueda = current_user.busqueda  
-    @buzones = consultar_busqueda(@busqueda) if !@busqueda.nil? && @busqueda.activa
+    if !@busqueda.nil? && @busqueda.activa
+      logger.debug "********** GENERAR REPORTE CON BUSQUEDA ACTIVA ******************"
+      @buzones = consultar_busqueda(@busqueda) 
+    else
+      logger.debug "********** GENERAR REPORTE SIN BUSQUEDA ACTIVA ******************"
+      @buzones = Buzone.all
+    end
+    
     respond_to do |format|
       format.html
       format.xlsx {

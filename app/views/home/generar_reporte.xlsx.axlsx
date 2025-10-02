@@ -1,4 +1,14 @@
 wb = xlsx_package.workbook
-wb = xlsx_package.workbook
 wb.add_worksheet(name: "Reporte") do |sheet|
+    sheet.add_row ["ID","Fecha de Recepcion","No. de Documento","Área Responsable","No. Instrumento",
+    "No. Libro","Paciente","Fecha de Disposición","Notario","No. Notaria","No. Oficio de Conclusión",
+    "Fecha de Conclusión","Acceso directo al archivo","Observaciones"]    
+    @buzones.each_with_index do |buzon,index|
+        celda = "M".to_s+(index+2).to_s
+        sheet.add_row [buzon.documento.id,buzon.documento.fecha_recepcion,buzon.documento.no_documento,
+        buzon.documento.area.nombre,buzon.documento.no_instrumento,buzon.documento.no_libro,buzon.documento.nombre_completo,
+        buzon.documento.fecha_disp,buzon.documento.nombre_completo_notario,buzon.documento.no_notaria,
+        buzon.documento.no_oficio_de_conclucion,buzon.documento.fecha_conclucion,buzon.documento.archivo.filename,buzon.documento.observaciones]
+        sheet.add_hyperlink location: "http://localhost:3000"+url_for(buzon.documento.archivo),ref:celda
+    end
 end
