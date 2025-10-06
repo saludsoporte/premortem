@@ -1,8 +1,12 @@
 <div class=" form-control bg-white" data-controller="home">
-  <%= link_to "Capturar Documento", new_documento_path,class: :"btn btn-sm btn-success" %>
+  <% if current_user.rol == 1 %>
+    <%= link_to "Capturar Documento", new_documento_path,class: :"btn btn-sm btn-success" %>
+  <% end %>
   <button id="btn_buscar" class="btn btn-sm btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><span><%=image_tag("search.svg")%></span> Busqueda</button>
   <%= link_to "Limpiar busqueda", home_limpiar_busqueda_path, method: :post, class: "btn btn-sm btn-warning" %>
-  <%= link_to raw("#{image_tag("file-earmark-bar-graph.svg")} Reportes") ,home_generar_reporte_path(format: :xlsx),class: :"btn btn-sm btn-success",target: :'_blank' %>
+  <% if current_user.rol == 1 %>
+    <%= link_to raw("#{image_tag("file-earmark-bar-graph.svg")} Exportar a Excel") ,home_generar_reporte_path(format: :xlsx),class: :"btn btn-sm btn-success",target: :'_blank' %>
+  <% end %>
 </div>
 <div  style="overflow:auto; height:550px">
   <table class="table  letra" >
@@ -18,7 +22,7 @@
           <th>No. Instrumento</th>
           <th>Fechas</th>
           <th>Observaciones</th>
-          <th>Documento</th>
+          <th></th>
         </tr>
       </thead>
       <tr>
@@ -75,7 +79,7 @@
       </tr>
       <tr >        
         <td class="table-active">
-          <p><b>Responsable</b></p>
+          <p><b>Responsable Legal del Paciente</b></p>
         </td>
         <td style="border-right: 1px solid black;" colspan="5"  >
           <% if b.nombre_res_op.nil? || b.nombre_res_op == "" %>
