@@ -39,7 +39,7 @@
   <li><hr class="sin_decored nav-item-divider"></li>
   <label>No. de Documento</label>
   <%= s.text_field :no_documento, class: "form-control", placeholder: "Ingrese el número de documento" %>
-  <label>Área Responsable</label>
+  <label>Área que turna</label>
   <div class="hstack gap-3">
     <%= s.radio_button :area, "432" %>    
     <label for='area_432'>Asuntos Jurídicos</label>
@@ -62,13 +62,13 @@
     <%= s.text_field :no_libro, class: "form-control" %>
   </div><br>
   <div class="hstack gap-3">
-    <label>Fecha de Conclusión</label>
+    <label>Fecha de Distribución Institucional</label>
     <%= s.date_field :fecha_conclusion, class: "form-control" %>
     <label>No. de Notaria</label>
     <%= s.text_field :no_notaria, class: "form-control" %>
   </div><br>
   <div class="hstack gap-3">
-    <label>No. Of de Conclusión</label>
+    <label>No. Oficio Envio Institucional</label>
     <%= s.text_field :no_of_conclusion, class: "form-control" %>
     <label>Observaciones</label>
     <%= s.text_field :observaciones, class: "form-control" %>
