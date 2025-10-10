@@ -1,5 +1,5 @@
 class Documento < ApplicationRecord
-  belongs_to :area
+  belongs_to :area  
   has_one_attached :archivo 
   validates :fecha_recepcion , presence: true
   validates :no_documento, presence: true  

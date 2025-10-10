@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_09_24_153709) do
+ActiveRecord::Schema[7.1].define(version: 2025_10_10_183954) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -89,8 +89,10 @@ ActiveRecord::Schema[7.1].define(version: 2025_09_24_153709) do
     t.bigint "estado_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["documento_id"], name: "index_buzones_on_documento_id"
     t.index ["estado_id"], name: "index_buzones_on_estado_id"
+    t.index ["user_id"], name: "index_buzones_on_user_id"
   end
 
   create_table "datos_personals", force: :cascade do |t|
@@ -191,6 +193,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_09_24_153709) do
   add_foreign_key "busquedas", "users"
   add_foreign_key "buzones", "documentos"
   add_foreign_key "buzones", "estados"
+  add_foreign_key "buzones", "users"
   add_foreign_key "datos_personals", "users"
   add_foreign_key "departamentos", "direccions"
   add_foreign_key "departamentos", "subdireccions"

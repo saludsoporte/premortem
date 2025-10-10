@@ -1,12 +1,17 @@
 <div class=" form-control bg-white" data-controller="home">
-  <% if current_user.rol == 1 %>
-    <%= link_to "Capturar Documento", new_documento_path,class: :"btn btn-sm btn-success" %>
-  <% end %>
-  <button id="btn_buscar" class="btn btn-sm btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><span><%=image_tag("search.svg")%></span> Busqueda</button>
-  <%= link_to "Limpiar busqueda", home_limpiar_busqueda_path, method: :post, class: "btn btn-sm btn-warning" %>
-  <% if current_user.rol == 1 %>
-    <%= link_to raw("#{image_tag("file-earmark-bar-graph.svg")} Exportar a Excel") ,home_generar_reporte_path(format: :xlsx),class: :"btn btn-sm btn-success",target: :'_blank' %>
-  <% end %>
+  <div class="hstack gap-3">
+    <div class="p-2">
+      <% if current_user.rol == 1 %>
+        <%= link_to "Capturar Documento", new_documento_path,class: :"btn btn-sm btn-success" %>
+      <% end %>
+      <button id="btn_buscar" class="btn btn-sm btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><span><%=image_tag("search.svg")%></span> Busqueda</button>
+      <%= link_to "Limpiar busqueda", home_limpiar_busqueda_path, method: :post, class: "btn btn-sm btn-warning" %>
+      <% if current_user.rol == 1 %>
+        <%= link_to raw("#{image_tag("file-earmark-bar-graph.svg")} Exportar a Excel") ,home_generar_reporte_path(format: :xlsx),class: :"btn btn-sm btn-success",target: :'_blank' %>
+      <% end %>
+    </div>    
+    <div class="p-2 ms-auto "><b>SUBDIRECCIÓN DE HOSPITALES</b></div>
+  </div>
 </div>
 <div  style="overflow:auto; height:550px">
   <table class="table  letra" >
@@ -15,13 +20,14 @@
       <thead class="table-dark">
         <tr>
           <th>No. Documento</th>
-          <th>Área</th>
+          <th>Área que turna</th>
           <th>No. Libro</th>
           <th>No. Notaria</th>
-          <th>No. Oficio conclucion</th>
           <th>No. Instrumento</th>
+          <th>No. Oficio Envio Institucional</th>          
+          <th>Capturista</th>          
           <th>Fechas</th>
-          <th>Observaciones</th>
+          <th>Observaciones</th>          
           <th></th>
         </tr>
       </thead>
@@ -29,11 +35,20 @@
         <td><%= b.no_documento %></td>
         <td><%= b.area.nombre %></td>
         <td><%= b.no_libro %></td>
-        <td><%= b.no_notaria %></td>
-        <td><%= b.no_oficio_de_conclucion %></td>
-        <td style="border-right: 1px solid black;"><%= b.no_instrumento %></td>
-        <td rowspan="5"  style="border-right: 1px solid black;">
+        <td><%= b.no_notaria %></td>       
+        <td ><%= b.no_instrumento %></td>
+        <td ><%= b.no_oficio_de_conclucion %></td>
+        <td style="border-right: 1px solid black;">             
+          <% unless buzon.user.nil? %>
+            <%= buzon.user.datos_personal.nombre_completo %>
+          <% end %>
+        </td>
+        <td rowspan="4"  style="border-right: 1px solid black;">
           <table class="table" >
+            <tr>
+              <td class="table-active"><label><b>Fecha de Creación</b></label></td>
+              <td><%= b.created_at.strftime("%F - %I:%M %p") %></td>
+            </tr>
             <tr>
               <td class="table-active"><label><b>Fecha Recepcion</b></label></td>
               <td><%= b.fecha_recepcion %></td>
@@ -43,13 +58,13 @@
               <td><%= b.fecha_disp %></td>
             </tr>
             <tr>
-              <td class="table-active"><label><b>Fecha Conclusión</b></label></td>
+              <td class="table-active"><label><b>Fecha de Distribución Institucional</b></label></td>
               <td><%= b.fecha_conclucion %></td>
             </tr>
           </table>
         </td>
-        <td rowspan="5" style="border-right: 1px solid black;"><%= b.observaciones %></td>
-        <td  rowspan="5">
+        <td rowspan="4" style="border-right: 1px solid black;"><%= b.observaciones %></td>
+        <td  rowspan="4">
           <%= link_to raw("ver archivo #{image_tag("binoculars.svg",size:"20x20")} #{
             image_tag "filetype-pdf-w.svg",size:"20x20"}"), 
             url_for(b.archivo),
@@ -66,19 +81,19 @@
         </td>
       </tr>
       <tr >
-        <td class="table-active">
+        <td colspan="2" class="table-active">
           <p><b>Paciente</b></p>
         </td>
         <td style="border-right: 1px solid black;" colspan="5"><%= b.nombre_completo %></td>
       </tr>
       <tr >
-        <td class="table-active">
+        <td colspan="2" class="table-active">
           <p><b>Notario</b></p>
         </td>
         <td style="border-right: 1px solid black;" colspan="5"  ><%= b.nombre_completo_notario %></td>
       </tr>
       <tr >        
-        <td class="table-active">
+        <td colspan="2" class="table-active">
           <p><b>Responsable Legal del Paciente</b></p>
         </td>
         <td style="border-right: 1px solid black;" colspan="5"  >

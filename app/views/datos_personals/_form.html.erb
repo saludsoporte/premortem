@@ -48,6 +48,8 @@
     <%= form.text_field :curp,maxlength:18 ,class: "form-control" %>
     <%= form.label :correo, "Correo" %>
     <%= form.email_field :correo,class: "form-control" %>
+    <%= form.label :carta, "Carta de Confidencialidad (PDF, PNG, JPG)" %>
+    <%= form.file_field :carta, class: "form-control" %>
     <br>
   </fieldset>
   <% if nuevo %>

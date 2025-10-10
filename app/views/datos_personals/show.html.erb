@@ -29,6 +29,23 @@
         <td class="table-dark"><strong>Correo:</strong></td>
         <td colspan="3"><%= @datos_personal.correo %></td>
       </tr>
+      <tr>
+        <td class="table-dark"><strong>Carta de Confidencialidad:</strong></td>
+        <td colspan="3">          
+          <% if @datos_personal.carta.attached? %>
+            <p class="form-control">
+              <strong>Archivo adjunto:</strong>
+              <% if @datos_personal.carta.image? %>
+                <%= link_to rails_blob_path(@datos_personal.carta, disposition: "attachment") do %>
+                  <%= image_tag @datos_personal.carta,width:200 %>
+                <% end %>
+              <% else %>
+                <%= link_to @datos_personal.carta.filename, url_for(@datos_personal.carta),target: :"_blanck",class: :"message-file"%>
+              <% end %>
+            </p>
+          <% end %>
+        </td>
+      </tr>
     </tbody>
   </table>
 </div>

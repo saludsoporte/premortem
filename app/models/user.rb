@@ -9,6 +9,9 @@ class User < ApplicationRecord
   has_one :busqueda, dependent: :destroy
   has_one :datos_personal, dependent: :destroy  
   has_one :area
+  has_many :buzones, dependent: :destroy
+  
+
   attr_writer :login
   
   def update_password_with_password(params, *options)
