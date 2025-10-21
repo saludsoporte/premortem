@@ -10,7 +10,11 @@ class DatosPersonal < ApplicationRecord
   validates :correo, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: false
   validates :carta, attached: true, content_type: ['application/pdf','image/png','image/jpeg'] 
   
-  def nombre_completo
-    self.nombre + " " + self.apellido_paterno + " " + self.apellido_materno 
+  def nombre_completo    
+    if self.apellido_materno.nil? || self.apellido_paterno.nil? || self.nombre.nil?
+      return ""
+    else
+      return self.nombre + " " + self.apellido_paterno + " " + self.apellido_materno
+    end    
   end
 end

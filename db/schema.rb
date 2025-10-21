@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_10_10_183954) do
+ActiveRecord::Schema[7.1].define(version: 2025_10_21_215745) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -139,7 +139,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_10_10_183954) do
     t.string "nombre_notario"
     t.string "no_notaria"
     t.string "no_oficio_de_conclucion"
-    t.date "fecha_conclucion"
+    t.date "fecha_clc_pub"
     t.string "observaciones"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -154,6 +154,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_10_10_183954) do
     t.string "apellido_p_res_op"
     t.string "apellido_m_res_op"
     t.string "no_instrumento"
+    t.date "fecha_clc_priv"
+    t.date "fecha_clc_bioetica"
     t.index ["area_id"], name: "index_documentos_on_area_id"
   end
 

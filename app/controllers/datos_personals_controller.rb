@@ -22,21 +22,20 @@ class DatosPersonalsController < ApplicationController
     @datos_personal = DatosPersonal.new()
     @user = User.find(params[:user]) if params[:user].present?
   end
-  def create  
+  def create      
     @area = Area.find(79)  
     usuario_nuevo = User.new(
       username: params[:datos_personal][:usuario],
       email: "correo@gmail.com",
       area_id:@area.id,
       password: params[:datos_personal][:password],
-      rol:2)
+      rol:params[:datos_personal][:rol])
     existe = User.find_by(username: params[:datos_personal][:usuario]).nil? == false ? true : false
     logger.debug "********** EXISTE USUARIO ******************"+existe.to_s
     
     if params[:datos_personal][:curp].length == 18 && existe == false
       usuario_nuevo.save
     end    
-
     @datos_personal = DatosPersonal.new(
       nombre: params[:datos_personal][:nombre],
       apellido_paterno: params[:datos_personal][:apellido_paterno],
