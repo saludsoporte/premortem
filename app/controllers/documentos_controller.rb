@@ -23,8 +23,9 @@ class DocumentosController < ApplicationController
         fecha_disp: params[:fecha_disp],
         notario: params[:notario],
         no_notaria: params[:no_notaria],
-        no_oficio_de_conclucion: params[:no_oficio_de_conclucion],
-        fecha_conclucion: params[:fecha_conclucion],
+        fecha_clc_pub: params[:fecha_clc_pub],
+        fecha_clc_priv: params[:fecha_clc_priv],
+        fecha_clc_bioetica: params[:fecha_clc_bioetica],        
         observaciones: params[:observaciones],
         archivo: params[:archivo]
       )
@@ -140,29 +141,39 @@ class DocumentosController < ApplicationController
   end
 
   # POST /documentos or /documentos.json
-  def create            
+  def create                
     params[:documento][:area_id]=params[:area_id]
     logger.debug "**************** parametros ***************"+documento_params.to_s    
     @documento = Documento.new(documento_params)
-
-    respond_to do |format|
-      if @documento.save
-        estado = Estado.find_by(estado:'Guardado')
-        area = Area.find(@documento.area_id)
-        direccion = Direccion.find_by(clave:area.clave).nil?
-        subdireccion = Subdireccion.find_by(clave:area.clave).nil?
-        departamento = Departamento.find_by(clave:area.clave).nil?
+    estado = Estado.find_by(estado:'Guardado')
+    area = Area.find(@documento.area_id)
+    direccion = Direccion.find_by(clave:area.clave).nil?
+    subdireccion = Subdireccion.find_by(clave:area.clave).nil?
+    departamento = Departamento.find_by(clave:area.clave).nil?
+    logger.debug "**************** parametros ***************"+estado.id.to_s    
+    logger.debug "**************** parametros ***************"+area.id.to_s    
+    logger.debug "**************** parametros ***************"+direccion.to_s    
+    logger.debug "**************** parametros ***************"+subdireccion.to_s    
+    logger.debug "**************** parametros ***************"+departamento.to_s  
+    respond_to do |format|      
+      if @documento.save        
         buzon = Buzone.new(
           estado_id: estado.id,          
           area_id:@documento.area_id,
           direccion: direccion,
           subdireccion: subdireccion,
           departamento: departamento,
-          documento_id:@documento.id
+          documento_id:@documento.id,
+          user_id: current_user.id
         )
-        buzon.save
-        format.html { redirect_to @documento, notice: "Documento was successfully created." }
-        format.json { render :show, status: :created, location: @documento }
+        if buzon.save          
+          format.html { redirect_to @documento, notice: "Documento was successfully created." }
+          format.json { render :show, status: :created, location: @documento }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @documento.errors, status: :unprocessable_entity }
+        end
+        
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @documento.errors, status: :unprocessable_entity }
@@ -216,9 +227,13 @@ class DocumentosController < ApplicationController
         :apellido_m_notario,
         :no_instrumento,
         :fecha_disp,        
-        :no_notaria,
-        :no_oficio_de_conclucion,
-        :fecha_conclucion,
+        :no_notaria,        
+        :fecha_clc_pub,
+        :fecha_clc_priv,
+        :fecha_clc_bioetica,    
+        :nombre_res_op,
+        :apellido_p_res_op,
+        :apellido_m_res_op,   
         :responsable_de_paciente,
         :observaciones,
         :archivo)

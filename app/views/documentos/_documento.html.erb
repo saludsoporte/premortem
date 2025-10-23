@@ -9,8 +9,16 @@
       <%= documento.fecha_disp %>
     </p>
     <p class="form-control">
-      <strong>Fecha conclución:</strong>
-      <%= documento.fecha_conclucion %>
+      <strong>Instituciónes Públicas:</strong>
+      <%= documento.fecha_clc_pub %>
+    </p>
+    <p class="form-control">
+      <strong>Instituciónes Privadas:</strong>
+      <%= documento.fecha_clc_priv %>
+    </p>
+    <p class="form-control">
+      <strong>Bioética:</strong>
+      <%= documento.fecha_clc_bioetica %>
     </p>
   </div>
   <div class="hstack gap-3">
@@ -71,11 +79,7 @@
     <p class="form-control">
       <strong>No notaria:</strong>
       <%= documento.no_notaria %>
-    </p>
-    <p class="form-control" >
-      <strong>No oficio de conclucion:</strong>
-      <%= documento.no_oficio_de_conclucion %>
-    </p>
+    </p>    
   </div>
   <div class="hstack gap-3">
     <p class="form-control">

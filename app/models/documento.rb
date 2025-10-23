@@ -20,7 +20,11 @@ class Documento < ApplicationRecord
   validates :no_instrumento, presence: true
   validates :fecha_disp, presence: true  
   validates :no_notaria, presence: true
-  validates :no_oficio_de_conclucion, presence: true  
+  
+  validates :fecha_clc_pub, presence: true
+  validates :fecha_clc_priv, presence: true
+  validates :fecha_clc_bioetica, presence: true
+  #validates :no_oficio_de_conclucion, presence: true  
   
   validates :archivo, attached: true, content_type: ['application/pdf','image/png','image/jpeg'] 
 
