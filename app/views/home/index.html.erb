@@ -23,8 +23,7 @@
           <th>Área que turna</th>
           <th>No. Libro</th>
           <th>No. Notaria</th>
-          <th>No. Instrumento</th>
-          <th>No. Oficio Envio Institucional</th>
+          <th>No. Instrumento</th>          
           <th>Capturista</th>
           <th>Fechas</th>
           <th>Observaciones</th>
@@ -36,8 +35,7 @@
         <td><%= b.area.nombre %></td>
         <td><%= b.no_libro %></td>
         <td><%= b.no_notaria %></td>
-        <td ><%= b.no_instrumento %></td>
-        <td ><%= b.no_oficio_de_conclucion %></td>
+        <td ><%= b.no_instrumento %></td>        
         <td style="border-right: 1px solid black;">
           <% unless buzon.user.nil? %>
             <%= buzon.user.datos_personal.nombre_completo %>
@@ -94,42 +92,46 @@
         <td colspan="2" class="table-active">
           <p><b>Paciente</b></p>
         </td>
-        <td style="border-right: 1px solid black;" colspan="5"><%= b.nombre_completo %></td>
+        <td style="border-right: 1px solid black;" colspan="4"><%= b.nombre_completo %></td>
       </tr>
       <tr >
         <td colspan="2" class="table-active">
           <p><b>Notario</b></p>
         </td>
-        <td style="border-right: 1px solid black;" colspan="5"  ><%= b.nombre_completo_notario %></td>
+        <td style="border-right: 1px solid black;" colspan="4"  ><%= b.nombre_completo_notario %></td>
       </tr>
       <tr >
         <td colspan="2" class="table-active">
           <p><b>Responsable Legal del Paciente</b></p>
         </td>
-        <td style="border-right: 1px solid black;"  >
-          <%= b.nombre_completo_responsable %>
-        </td>
         <% if !b.nombre_res_op.nil? || !b.nombre_res_op == "" %>
-          <td  class="table-active">
-            <p><b>2° Responsable Legal del Paciente</b></p>
+          <td  colspan="2"  >
+          <% else %>
+            <td style="border-right: 1px solid black;" colspan="4"  >
+            <% end %>
+            <%= b.nombre_completo_responsable %>
           </td>
-          <td style="border-right: 1px solid black;"   >
-            <%= b.nombre_completo_responsable_op %>
-          </td>
-        <% end %>
-      </tr>
-      <tr></tr>
-    <% end %>
-  </table>
-</div>
-<div class="offcanvas offcanvas-end  w-50 " tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasRightLabel">Busqueda</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          <% if !b.nombre_res_op.nil? || !b.nombre_res_op == "" %>
+            <td  class="table-active">
+              <p><b>2° Responsable Legal del Paciente</b></p>
+            </td>
+            <td style="border-right: 1px solid black;"   >
+              <%= b.nombre_completo_responsable_op %>
+            </td>
+          <% end %>
+        </tr>
+        <tr></tr>
+      <% end %>
+    </table>
   </div>
-  <div class="offcanvas-body">
-    <div class="bg-white " style="font-size:12px" data-controller="home">
-      <%= render "partials/menu_busqueda"%>
+  <div class="offcanvas offcanvas-end  w-50 " tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasRightLabel">Busqueda</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div class="bg-white " style="font-size:12px" data-controller="home">
+        <%= render "partials/menu_busqueda"%>
+      </div>
     </div>
   </div>
-</div>
