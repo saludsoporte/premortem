@@ -192,6 +192,33 @@ class HomeController < ApplicationController
               sql += "AND area_id = '#{value}' "
             end
         end
+        when "f_publicas"        
+        if !value.nil? && value != ""
+            logger.debug "Buscando por fecha de recepción: #{value}"
+            if sql == ""
+              sql += "f_publicas = '#{value}' "
+            else
+              sql += "AND f_publicas = '#{value}' "
+            end
+        end
+      when "f_privadas"
+        if !value.nil? && value != ""
+            logger.debug "Buscando por fecha de recepción: #{value}"
+            if sql == ""
+              sql += "f_privadas = '#{value}' "
+            else
+              sql += "AND f_privadas = '#{value}' "
+            end
+        end
+      when "f_bioetica"
+        if !value.nil? && value != ""
+            logger.debug "Buscando por fecha de bioética: #{value}"
+            if sql == ""
+              sql += "f_bioetica = '#{value}' "
+            else
+              sql += "AND f_bioetica = '#{value}' "
+            end
+        end
       when "f_recp"        
         if !value.nil? && value != ""
             logger.debug "Buscando por fecha de recepción: #{value}"            
