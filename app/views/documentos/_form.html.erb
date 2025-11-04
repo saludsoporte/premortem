@@ -72,15 +72,31 @@
       <input id="area_id" name="area_id" type="number" hidden>
     </div>
     <br>
-    <div class="hstack gap-3">
-      <b><%= f.label :"Instituciónes Públicas",id:"ip"   %></b>
-      <%= f.date_field :fecha_clc_pub ,class: "form-control" %>
-      <b><%= f.label :"Instituciónes Privadas",id:"ipp" %></b>
-      <%= f.date_field :fecha_clc_priv ,class: "form-control" %>
-      <b><%= f.label :"Bioética",id:"bio" %></b>
-      <%= f.date_field :fecha_clc_bioetica ,class: "form-control" %>
-    </div>
-    <br>
+    <table class="table table-bordered" style="font-size:13px">
+      <thead class="table-dark">
+        <td class="text-center"></td>
+        <td>Número de conclución</td>
+        <td>Fecha de conclusión</td>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="table-dark">Institciones Publicas</td>          
+          <td><%= f.text_field :no_oficio_de_clc_pub ,class: "form-control" %></td>
+          <td><%= f.date_field :fecha_clc_pub ,class: "form-control" %></td>
+        </tr>
+        <tr>
+          <td class="table-dark" >Instituciones Privadas</td>          
+          <td><%= f.text_field :no_oficio_de_clc_priv ,class: "form-control" %></td>
+          <td><%= f.date_field :fecha_clc_priv ,class: "form-control" %></td>
+        </tr>
+        <tr>
+          <td class="table-dark">Bioética</td>          
+          <td><%= f.text_field :no_oficio_de_clc_bioetica ,class: "form-control" %></td>
+          <td><%= f.date_field :fecha_clc_bioetica ,class: "form-control" %></td>
+        </tr>
+      </tbody>
+    </table>
+    <br>    
     <div class="hstack gap-3">
       <b><%= f.label :"Archivo Escaneado",id:"ac" %>        </b>
       <%= f.file_field :archivo ,class: "form-control" %>

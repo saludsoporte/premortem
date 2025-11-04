@@ -8,16 +8,21 @@
       <strong>Fecha dispocición:</strong>
       <%= documento.fecha_disp %>
     </p>
+  </div>
+  <div class="hstack gap-3">
     <p class="form-control">
-      <strong>Instituciónes Públicas:</strong>
+      <strong>Instituciónes Públicas:</strong><br>
+      <b>#Conclución:</b> <%= documento.no_oficio_de_clc_pub %> | 
       <%= documento.fecha_clc_pub %>
     </p>
     <p class="form-control">
-      <strong>Instituciónes Privadas:</strong>
+      <strong>Instituciónes Privadas:</strong><br>
+      <b>#Conclución:</b> <%= documento.no_oficio_de_clc_priv %> | 
       <%= documento.fecha_clc_priv %>
     </p>
     <p class="form-control">
-      <strong>Bioética:</strong>
+      <strong>Bioética:</strong><br>
+      <b>#Conclución:</b> <%= documento.no_oficio_de_clc_bioetica %> | 
       <%= documento.fecha_clc_bioetica %>
     </p>
   </div>
@@ -79,7 +84,7 @@
     <p class="form-control">
       <strong>No notaria:</strong>
       <%= documento.no_notaria %>
-    </p>    
+    </p>
   </div>
   <div class="hstack gap-3">
     <p class="form-control">

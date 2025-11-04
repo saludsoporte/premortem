@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_10_27_181712) do
+ActiveRecord::Schema[7.1].define(version: 2025_11_04_171102) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -71,7 +71,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_10_27_181712) do
     t.string "no_inst"
     t.string "no_libro"
     t.string "no_notaria"
-    t.string "no_conclusion"
+    t.string "no_oficio_de_clc_pub"
     t.boolean "activa", default: false
     t.bigint "user_id", null: false
     t.string "observaciones"
@@ -80,6 +80,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_10_27_181712) do
     t.date "f_publicas"
     t.date "f_privadas"
     t.date "f_bioetica"
+    t.string "no_oficio_de_clc_priv"
+    t.string "no_oficio_de_clc_bioetica"
     t.index ["user_id"], name: "index_busquedas_on_user_id"
   end
 
@@ -141,7 +143,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_10_27_181712) do
     t.date "fecha_disp"
     t.string "nombre_notario"
     t.string "no_notaria"
-    t.string "no_oficio_de_conclucion"
+    t.string "no_oficio_de_clc_pub"
     t.date "fecha_clc_pub"
     t.string "observaciones"
     t.datetime "created_at", null: false
@@ -159,6 +161,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_10_27_181712) do
     t.string "no_instrumento"
     t.date "fecha_clc_priv"
     t.date "fecha_clc_bioetica"
+    t.string "no_oficio_de_clc_priv"
+    t.string "no_oficio_de_clc_bioetica"
     t.index ["area_id"], name: "index_documentos_on_area_id"
   end
 

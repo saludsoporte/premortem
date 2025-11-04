@@ -24,7 +24,10 @@ class Documento < ApplicationRecord
   validates :fecha_clc_pub, presence: true
   validates :fecha_clc_priv, presence: true
   validates :fecha_clc_bioetica, presence: true
-  #validates :no_oficio_de_conclucion, presence: true  
+  
+  validates :no_oficio_de_clc_pub, presence: true  
+  validates :no_oficio_de_clc_priv, presence: true  
+  validates :no_oficio_de_clc_bioetica, presence: true  
   
   validates :archivo, attached: true, content_type: ['application/pdf','image/png','image/jpeg'] 
 
