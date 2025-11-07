@@ -36,8 +36,9 @@
         <td><%= b.no_libro %></td>
         <td><%= b.no_notaria %></td>
         <td ><%= b.no_instrumento %></td>
-        <td style="border-right: 1px solid black;">
-          <% unless buzon.user.nil? %>
+        <td style="border-right: 1px solid black;">   
+          <%= buzon.user.datos_personal.nombre_completo %>       
+          <% if buzon.user.nil? %>
             <%= buzon.user.datos_personal.nombre_completo %>
           <% end %>
         </td>
