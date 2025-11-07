@@ -13,6 +13,9 @@
       <li class="nav-item" role="presentation">
         <button class="nav-link" id="plant-tab" data-bs-toggle="tab" data-bs-target="#responsableOpcional" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Resp. Opcional</button>
       </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="plant-tab" data-bs-toggle="tab" data-bs-target="#num_concluciones" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Fechas de Conclución</button>
+      </li>
     </ul>
     <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade show active" id="paciente" role="tabpanel" aria-labelledby="home-tab" tabindex="0"><br>
@@ -43,6 +46,22 @@
           <%= s.text_field :apellido_materno_responsable_opcional, class: "form-control", placeholder: "apellido materno" %>
         </div>
       </div>
+      <div class="tab-pane fade" id="num_concluciones" role="tabpanel" aria-labelledby="home-tab" tabindex="0">      <br>
+  <div class="hstack gap-3">
+    <%= s.text_field :no_oficio_de_clc_pub, class: "form-control", placeholder: "Número de conclución" %>
+    <%= s.date_field :fecha_clc_pub, class: "form-control" %>   
+  </div>
+   
+<div class="hstack gap-3">
+    <%= s.text_field :no_oficio_de_clc_priv, class: "form-control", placeholder: "Número de conclución" %>
+    <%= s.date_field :fecha_clc_priv, class: "form-control" %> 
+</div>
+ 
+<div class="hstack gap-3">
+    <%= s.text_field :no_oficio_de_clc_bioetica, class: "form-control", placeholder: "Número de conclución" %>
+    <%= s.date_field :fecha_clc_bioetica, class: "form-control"%>
+</div>
+</div>
     </div>
     <li><hr class="sin_decored nav-item-divider"></li>
     <label>No. de Documento Recibido</label>
