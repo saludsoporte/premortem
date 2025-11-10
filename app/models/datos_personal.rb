@@ -11,11 +11,10 @@ class DatosPersonal < ApplicationRecord
   validates :carta, attached: true, content_type: ['application/pdf','image/png','image/jpeg'] 
   
   def nombre_completo        
-    if self.user.rol == 1
+    if self.user.username == 'admin'
       return "Administrador del Sistema"
     else
       return self.nombre + " " + self.apellido_paterno + " " + self.apellido_materno    
-    end
-    
+    end    
   end
 end

@@ -41,7 +41,7 @@
           <tr >
             <td><%= usuario.username %></td>
             <td colspan = "3">
-              Crear datos personales para el usuario <b><%= usuario.username %></b>
+              <p style="color:red"> !! CREAR DATOS PERSONALES ¡¡ </p> <b><%= usuario.username %></b>
             </td>
             <td>
               <%= link_to "Llenar datos", new_datos_personal_path(user:usuario.id),class: :"btn btn-sm btn-success"%>

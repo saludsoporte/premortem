@@ -35,6 +35,10 @@
   <fieldset id="datos_personales" class="form-group" disabled >
   <% else %>   
   <fieldset id="datos_personales" class="form-group" >
+    <div class="hstack gap-3">
+      <p><b>Usuario :</b></p>
+      <p><%= @user.username %></p>
+    </div>
   <% end %>
   <div class="row">
     <div class="col">
