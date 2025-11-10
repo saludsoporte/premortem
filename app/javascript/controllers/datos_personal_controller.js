@@ -43,7 +43,7 @@ function habilitar(){
   if ($("#datos_personal_apellido_materno").val() == "") {
     bandera = false;
   }
-  if ($("#datos_personal_titulo").val() == "") {
+  if ($("#datos_personal_unidad").val() == "") {
     bandera = false;
   }
   if ($("#datos_personal_puesto").val() == "") {

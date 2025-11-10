@@ -1,6 +1,7 @@
 class DatosPersonalsController < ApplicationController
   def edit
     @datos_personal = DatosPersonal.find(params[:id])        
+    @user = User.find(@datos_personal.user_id) 
   end
   def update            
     @datos_personal = DatosPersonal.find(params[:id])        
@@ -9,7 +10,7 @@ class DatosPersonalsController < ApplicationController
       apellido_paterno: params[:datos_personal][:apellido_paterno],
       apellido_materno: params[:datos_personal][:apellido_materno],
       puesto: params[:datos_personal][:puesto],
-      titulo: params[:datos_personal][:titulo],
+      unidad: params[:datos_personal][:unidad],
       curp: params[:datos_personal][:curp],
       correo:params[:datos_personal][:correo]
     )
@@ -41,7 +42,7 @@ class DatosPersonalsController < ApplicationController
       apellido_paterno: params[:datos_personal][:apellido_paterno],
       apellido_materno: params[:datos_personal][:apellido_materno],
       puesto: params[:datos_personal][:puesto],
-      titulo: params[:datos_personal][:titulo],
+      unidad: params[:datos_personal][:unidad],
       curp: params[:datos_personal][:curp],
       correo:params[:datos_personal][:correo],
       carta:params[:datos_personal][:carta],
@@ -60,7 +61,7 @@ class DatosPersonalsController < ApplicationController
         nombre: params[:nombre],
         apellidos: params[:apellidos],
         puesto: params[:puesto],
-        titulo: params[:titulo],
+        unidad: params[:unidad],
         user_id:params[:user]
       )
       if datos.save
@@ -80,7 +81,7 @@ class DatosPersonalsController < ApplicationController
       bandera = false
     elsif params[:puesto].blank?      
       bandera = false
-    elsif params[:titulo].blank?      
+    elsif params[:unidad].blank?      
       bandera = false
     else
       bandera = true
