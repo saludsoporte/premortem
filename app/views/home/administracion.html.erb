@@ -15,7 +15,7 @@
       <tr>
         <th>Nombre de usuario</th>
         <th>Nombre</th>
-        <th>Titulo</th>
+        <th>Unidad</th>
         <th>Puesto</th>
         <th></th>
       </tr>
@@ -26,11 +26,11 @@
           <tr>
             <td><b><%= usuario.username %></b></td>
             <td><%= usuario.datos_personal.nombre_completo %></td>
-            <td><%= usuario.datos_personal.titulo %></td>
+            <td><%= usuario.datos_personal.unidad %></td>
             <td><%= usuario.datos_personal.puesto %></td>
             <td>
               <%= link_to raw("#{image_tag("binoculars.svg")} Ver"), datos_personal_path(usuario.datos_personal.id), class: "btn btn-sm btn-primary" %>
-              <% unless usuario.rol == 1 %>
+              <% unless usuario.username == 'admin' %>
                 <%= link_to raw("#{image_tag("pencil-square.svg")} Editar"), edit_datos_personal_path(usuario.datos_personal.id), class: "btn btn-sm naranja_sin_adorno" %>
                 <%= link_to raw("#{image_tag("trash.svg")} Eliminar"), home_eliminar_path(id:usuario.id), data: { confirm: '¿Estas seguro?' },class: :"btn btn-sm btn-danger" %>
                 <%= link_to raw("#{image_tag("key.svg")} Cambiar Contraseña"), edit_password_path(id:usuario.id),class: :"btn btn-sm btn-warning" %>
