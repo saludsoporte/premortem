@@ -6,6 +6,7 @@ class DatosPersonal < ApplicationRecord
   validates :apellido_materno, presence: true
   validates :puesto, presence: true
   validates :unidad, presence: true
+  validates :clues, presence: true
   validates :curp, presence: true, length: { is: 18 }, uniqueness: true   
   validates :correo, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: false
   validates :carta, attached: true, content_type: ['application/pdf','image/png','image/jpeg'] 

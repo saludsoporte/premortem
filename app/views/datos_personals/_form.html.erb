@@ -50,6 +50,8 @@
       <%= form.text_field :apellido_materno, class: "form-control" %>
       <%= form.label :unidad, "Unidad de Procedencia" %>
       <%= form.text_field :unidad, class: "form-control" %>
+      <%= form.label :carta, "Carta de Confidencialidad" %>
+<%= form.file_field :carta, class: "form-control" %>
     </div>
     <div class="col">
       <%= form.label :puesto, "Puesto" %>
@@ -58,8 +60,8 @@
       <%= form.text_field :curp,maxlength:18 ,class: "form-control" %>
       <%= form.label :correo, "Correo" %>
       <%= form.email_field :correo,class: "form-control" %>
-      <%= form.label :carta, "Carta de Confidencialidad" %>
-      <%= form.file_field :carta, class: "form-control" %>
+      <%= form.label :clues, "CLUES" %>
+      <%= form.text_field :clues, class: "form-control" %>
     </div>
   </div>
   <br>

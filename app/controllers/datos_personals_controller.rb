@@ -12,6 +12,7 @@ class DatosPersonalsController < ApplicationController
       puesto: params[:datos_personal][:puesto],
       unidad: params[:datos_personal][:unidad],
       curp: params[:datos_personal][:curp],
+      clues:params[:datos_personal][:clues],
       correo:params[:datos_personal][:correo]
     )
       redirect_to home_administracion_path(datos:true)
