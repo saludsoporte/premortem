@@ -210,7 +210,7 @@ class HomeController < ApplicationController
               sql += "AND f_privadas = '#{value}' "
             end
         end
-      when "f_bioetica"
+      when "f_bioetica"        
         if !value.nil? && value != ""
             logger.debug "Buscando por fecha de bioética: #{value}"
             if sql == ""
@@ -273,13 +273,31 @@ class HomeController < ApplicationController
               sql += "AND no_notaria ILIKE ('%#{value}%') "
             end
         end
-      when "no_conclusion"
+      when "no_oficio_de_clc_pub"
         if !value.nil? && value != ""
             logger.debug "Buscando por no. conclusión: #{value}"
             if sql == ""
-              sql += "no_oficio_de_conclusion ILIKE ('%#{value}%') "
+              sql += "no_oficio_de_clc_pub ILIKE ('%#{value}%') "
             else
-              sql += "AND no_oficio_de_conclusion ILIKE ('%#{value}%') "
+              sql += "AND no_oficio_de_clc_pub ILIKE ('%#{value}%') "
+            end
+        end
+        when "no_oficio_de_clc_priv"
+        if !value.nil? && value != ""
+            logger.debug "Buscando por no. conclusión: #{value}"
+            if sql == ""
+              sql += "no_oficio_de_clc_priv ILIKE ('%#{value}%') "
+            else
+              sql += "AND no_oficio_de_clc_priv ILIKE ('%#{value}%') "
+            end
+        end
+        when "no_oficio_de_clc_bioetica"
+        if !value.nil? && value != ""
+            logger.debug "Buscando por no. conclusión: #{value}"
+            if sql == ""
+              sql += "no_oficio_de_clc_bioetica ILIKE ('%#{value}%') "
+            else
+              sql += "AND no_oficio_de_clc_bioetica ILIKE ('%#{value}%') "
             end
         end
       when "observaciones"
@@ -329,7 +347,9 @@ class HomeController < ApplicationController
       no_inst: params[:no_inst],
       no_libro: params[:no_libro],
       no_notaria: params[:no_notaria],
-      no_conclusion: params[:no_conclusion],
+      no_oficio_de_clc_pub: params[:no_oficio_de_clc_pub],
+      no_oficio_de_clc_priv: params[:no_oficio_de_clc_priv],
+      no_oficio_de_clc_bioetica: params[:no_oficio_de_clc_bioetica],
       observaciones: params[:observaciones],
       activa: true,
       user_id: current_user.id

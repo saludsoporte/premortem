@@ -47,21 +47,22 @@
         </div>
       </div>
       <div class="tab-pane fade" id="num_concluciones" role="tabpanel" aria-labelledby="home-tab" tabindex="0">      <br>
-  <div class="hstack gap-3">
-    <%= s.text_field :no_oficio_de_clc_pub, class: "form-control", placeholder: "Número de conclución" %>
-    <%= s.date_field :fecha_clc_pub, class: "form-control" %>   
-  </div>
-   
-<div class="hstack gap-3">
-    <%= s.text_field :no_oficio_de_clc_priv, class: "form-control", placeholder: "Número de conclución" %>
-    <%= s.date_field :fecha_clc_priv, class: "form-control" %> 
-</div>
- 
-<div class="hstack gap-3">
-    <%= s.text_field :no_oficio_de_clc_bioetica, class: "form-control", placeholder: "Número de conclución" %>
-    <%= s.date_field :fecha_clc_bioetica, class: "form-control"%>
-</div>
-</div>
+        <label>Instituciones Públicas</label><br>
+        <div class="hstack gap-3">         
+          <%= s.text_field :no_oficio_de_clc_pub, class: "form-control", placeholder: "Número de conclución" %>
+          <%= s.date_field :f_publica, class: "form-control" %>
+        </div>
+        <label>Instituciones Privadas</label><br>
+        <div class="hstack gap-3">          
+          <%= s.text_field :no_oficio_de_clc_priv, class: "form-control", placeholder: "Número de conclución" %>
+          <%= s.date_field :f_privada, class: "form-control" %>
+        </div>
+        <label>Bioética</label><br>
+        <div class="hstack gap-3">          
+          <%= s.text_field :no_oficio_de_clc_bioetica, class: "form-control", placeholder: "Número de conclución" %>
+          <%= s.date_field :f_bioetica, class: "form-control"%>
+        </div>
+      </div>
     </div>
     <li><hr class="sin_decored nav-item-divider"></li>
     <label>No. de Documento Recibido</label>
@@ -90,24 +91,12 @@
     </div>
     <br>
     <div class="hstack gap-3">
-      <label>Fecha de Distribución Institucional</label>
-      <%= s.date_field :fecha_conclusion, class: "form-control" %>
       <label>No. de Notaria</label>
       <%= s.text_field :no_notaria, class: "form-control" %>
-    </div>
-    <br>
-    <div class="hstack gap-3">
-      <label>Instituciones Públicas</label>
-      <%= s.date_field :fecha_clc_pub, class: "form-control" %>
-      <label>Bioética</label>
-      <%= s.date_field :fecha_clc_bioetica, class: "form-control" %>
-    </div><br>
-    <div class="hstack gap-3">
-      <label>Instituciones Privadas</label>
-      <%= s.date_field :fecha_clc_priv, class: "form-control" %>
       <label>Observaciones</label>
       <%= s.text_field :observaciones, class: "form-control" %>
     </div>
+    <br>
     <%= s.submit "Buscar" ,class: :"btn btn-primary"%>
   <% end %>
 </div>
