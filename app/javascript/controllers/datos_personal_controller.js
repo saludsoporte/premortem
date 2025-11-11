@@ -3,12 +3,12 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="datos-personal"
 export default class extends Controller {
   connect() {
-   $("#eye_icon").on("click", function () {
-     if ($(".password").attr("type") === "password") {
-       $(".password").attr("type", "text");
-     } else {
-       $(".password").attr("type", "password");
-     }
+   $("#eye_icon").on("change", function () {
+    if(this.checked) {
+      $("#datos_personal_password").attr("type", "text");
+    } else {
+      $("#datos_personal_password").attr("type", "password");
+    }     
    });
     $("#datos_personal_usuario").on("keyup", function () {
       console.log("entro en usuario")
