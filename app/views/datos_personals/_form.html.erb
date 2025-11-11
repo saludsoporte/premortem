@@ -28,7 +28,8 @@
       <%= form.label :usuario, "Usuario" %>
       <%= form.text_field :usuario, class: "form-control" %>
       <%= form.label :password, "Contraseña" %>
-      <%= form.password_field :password, class: "form-control",disabled:true %>
+      <%= form.password_field :password, class: "form-control password",disabled:true %>
+      <input type="checkbox" id="eye_icon" >Ver Contraseña
       <%= form.label :rol%>
       <%= form.select :rol, options_for_select([['Administrador', 1], ['Usuario', 2]]), {}, class: "form-select" %>
     </div> 
