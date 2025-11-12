@@ -4,7 +4,7 @@ wb.add_worksheet(name: "Reporte") do |sheet|
     "No. Libro","Paciente","Fecha de Disposición","Notario","No. Notaria","Institución Publica","Institución Privada","Bioetica",
     "Acceso directo al archivo","Observaciones"]    
     @buzones.each_with_index do |buzon,index|
-        celda = "M".to_s+(index+2).to_s
+        celda = "N".to_s+(index+2).to_s
         sheet.add_row [buzon.documento.id,buzon.documento.fecha_recepcion,buzon.documento.no_documento,
         buzon.documento.area.nombre,buzon.documento.no_instrumento,buzon.documento.no_libro,buzon.documento.nombre_completo,
         buzon.documento.fecha_disp,buzon.documento.nombre_completo_notario,buzon.documento.no_notaria,        
