@@ -11,6 +11,7 @@ wb.add_worksheet(name: "Reporte") do |sheet|
         buzon.documento.fecha_clc_pub,
         buzon.documento.fecha_clc_priv,
         buzon.documento.fecha_clc_bioetica,buzon.documento.archivo.filename,buzon.documento.observaciones]
-        sheet.add_hyperlink location: "http://localhost:3000"+url_for(buzon.documento.archivo),ref:celda
+        sheet.add_hyperlink location: "https://slp-db.slpsalud.gob.mx:5050"+url_for(buzon.documento.archivo),ref:celda
+        #http://localhost:3000
     end
 end
