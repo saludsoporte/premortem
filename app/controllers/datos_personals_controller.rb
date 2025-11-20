@@ -47,6 +47,7 @@ class DatosPersonalsController < ApplicationController
       curp: params[:datos_personal][:curp],
       correo:params[:datos_personal][:correo],
       carta:params[:datos_personal][:carta],
+      clues:params[:datos_personal][:clues],
       user_id: usuario_nuevo.id
     )
     if @datos_personal.save
